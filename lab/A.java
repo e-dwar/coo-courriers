@@ -1,8 +1,8 @@
-public abstract class A 
+public abstract class A<X extends I>
 {
-    protected I v;
+    protected X v;
 
-    public A (I v) 
+    public A (X v) 
     {
         this.v = v;
     }
