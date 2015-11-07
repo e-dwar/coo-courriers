@@ -1,10 +1,9 @@
-public class Main
+class Main
 {
     public static void main (String[] args)
     {
-        B x = new B(new T());
-        x.allo();
-
-        System.out.println("success");
+        A<X> a = new A<X>(new X());
+        B b = new B(new X());
+        System.out.println(b.v());
     }
 }

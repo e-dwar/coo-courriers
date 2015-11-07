@@ -1,11 +1,11 @@
-public class B extends A<T>
+class B extends A<X>
 {
-    public B (T v) 
+    B (X v) 
     {
         super(v);
     }
 
-    public T allo ()
+    X v ()
     {
         return v;
     }
