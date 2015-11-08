@@ -25,7 +25,7 @@ public class PromisoryNote extends Letter<Money> {
 
 	@Override
 	public void doAction() {
-		Money amout = (Money)this.content;
+		Money amout = this.content;
 		this.receiver.getBankAccount().credit(amout.getAmount());
 		this.setOpened(true);
 	}
