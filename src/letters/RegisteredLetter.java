@@ -1,5 +1,7 @@
 package letters;
 
+import content.Text;
+
 public class RegisteredLetter extends LetterDecorator {
 
 	/*
@@ -8,7 +10,6 @@ public class RegisteredLetter extends LetterDecorator {
 	public RegisteredLetter(Letter<?> letter) {
 		super(letter);
 	}
-
 	/*
 	 * Methods
 	 */
@@ -20,8 +21,10 @@ public class RegisteredLetter extends LetterDecorator {
 
 	@Override
 	public void doAction() {
-		// TODO Auto-generated method stub
-
+		super.doAction();
+		Text aText = new Text("I've well received your letter.");
+		Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
+		this.receiver.sendLetter(letter);
 	}
 
 }

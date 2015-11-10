@@ -75,5 +75,20 @@ public abstract class Letter<C extends Content> {
 	/**
 	 * Executes an action on the opening.
 	 */
-	public abstract void doAction();
+	public void doAction(){
+		this.setOpened(true);
+		
+	}
+	
+	/**
+	 * Returns if the letter is urgent or not.
+	 * @return false
+	 */
+	public boolean isUrgent(){
+		return false;
+	}
+	
+	public boolean isValid(){
+		return true;
+	}
 }

@@ -53,7 +53,7 @@ public class Inhabitant {
 	 * @param letter
 	 */
 	public void sendLetter(Letter<?> letter){
-		
+		this.city.addLetter(letter);
 	}
 	
 	/**
@@ -61,7 +61,10 @@ public class Inhabitant {
 	 * @param letter
 	 */
 	public void receiveLetter(Letter<?> letter){
-		
+		if(!letter.getOpened())
+			letter.doAction();
+		else 
+			System.out.println("This letter has been opened.");
 	}
 
 }

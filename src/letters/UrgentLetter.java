@@ -15,13 +15,17 @@ public class UrgentLetter extends LetterDecorator {
 	
 	@Override
 	public double getCost() {
-		//Need to be done.
-		return 0;
+		return this.letter.getCost() * 2;
 	}
 
 	@Override
 	public void doAction() {
 		//Need to be done.
+	}
+	
+	@Override
+	public boolean isUrgent(){
+		return true;
 	}
 
 }

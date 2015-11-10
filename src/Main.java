@@ -1,62 +1,79 @@
 import city.BankAccount;
 import city.City;
 import city.Inhabitant;
-import content.Content;
-import content.Money;
-import content.Text;
-import letters.Letter;
-import letters.PromisoryNote;
-import letters.RegisteredLetter;
-import letters.SimpleLetter;
+import content.*;
+import letters.*;
 
 public class Main {
 
-    public static void main (String[] args) {
+	public static void main(String[] args) {
 
-        /*Letter souha = new SimpleLetter(new Text("allo Souha"));
+		try {
+			run();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Error : " + e.getMessage());
+		}
+	}
 
-        Letter valentin = new PromisoryNote(
-            new SimpleLetter(new Text("allo Valentin")), 
-            new Money(1)
-        );
+	public static void run() {
 
-        Letter edouard = new PromisoryNote(
-            new PromisoryNote(
-                new SimpleLetter(new Text("allo Edouard")), 
-                new Money(2)
-            ), 
-            new Money(1)
-        );
+		/*
+		 * Letter souha = new SimpleLetter(new Text("allo Souha"));
+		 * 
+		 * Letter valentin = new PromisoryNote( new SimpleLetter(new
+		 * Text("allo Valentin")), new Money(1) );
+		 * 
+		 * Letter edouard = new PromisoryNote( new PromisoryNote( new
+		 * SimpleLetter(new Text("allo Edouard")), new Money(2) ), new Money(1)
+		 * );
+		 * 
+		 * System.out.println("\n----"); souha.print();
+		 * System.out.println("\n----"); valentin.print();
+		 * System.out.println("\n----"); edouard.print();
+		 * System.out.println("\n----");
+		 */
 
-        System.out.println("\n----");
-        souha.print();
-        System.out.println("\n----");
-        valentin.print();
-        System.out.println("\n----");
-        edouard.print();
-        System.out.println("\n----");*/
-    	
-    	
-    	/** Nous devons :
-    	 * - CrÈer une ville
-    	 * - CrÈer 100 habitants dans cette ville
-    	 * - CrÈer une mÈthode pour gÈnÈrer alÈatoirement des courriers
-    	 * - CrÈer une mÈthode qui envoie des courriers sur plusieurs jours
-    	 */
-    	
-    	City disneyLand = new City("Disney Land");
-    	
-    	Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand, new BankAccount(5000));
-    	Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand, new BankAccount(5000));
-    	
-    	Letter<Text> aLetter = new SimpleLetter(mickey, minnie, new Text("I need money !"));
-    	Letter<Content> aRegistered = new RegisteredLetter(aLetter);
-    	Letter<Money> aPromisory = new PromisoryNote(minnie, mickey, new Money(150));
-    	
-    	System.out.println(aLetter.getSender().getName() + " a envoyÈ une lettre ‡ " + aLetter.getReceiver().getName() + " ce qui lui a co˚tÈ : " + aLetter.getCost() + "$");
-    	System.out.println(aPromisory.getSender().getName() + " a envoyÈ une lettre ‡ " + aPromisory.getReceiver().getName() + " ce qui lui a co˚tÈ : " + aPromisory.getCost() + "$");
-    	System.out.println("Prix d'une registered = "+ aRegistered.getCost() + "$");
+		/**
+		 * Nous devons : - Cr√©er une ville - Cr√©er 100 habitants dans cette
+		 * ville - Cr√©er une m√©thode pour g√©n√©rer al√©atoirement des courriers -
+		 * Cr√©er une m√©thode qui envoie des courriers sur plusieurs jours
+		 */
 
-    	disneyLand.distributeLetters();
-    }
+		City disneyLand = new City("Disney Land");
+
+		Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand,
+				new BankAccount(5000));
+		Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand,
+				new BankAccount(5000));
+
+		Letter<Text> aLetter = new SimpleLetter(mickey, minnie, new Text(
+				"I need money !"));
+		Letter<Content> aRegistered = new RegisteredLetter(aLetter);
+		Letter<Money> aPromisory = new PromisoryNote(minnie, mickey, new Money(
+				150));
+
+		System.out.println(aLetter.getSender().getName()
+				+ " a envoy√© une lettre √† " + aLetter.getReceiver().getName()
+				+ " ce qui lui a co√ªt√© : " + aLetter.getCost() + "$");
+		System.out.println(aPromisory.getSender().getName()
+				+ " a envoy√© une lettre √† "
+				+ aPromisory.getReceiver().getName() + " ce qui lui a co√ªt√© : "
+				+ aPromisory.getCost() + "$");
+		System.out.println("Prix d'une registered = " + aRegistered.getCost()
+				+ "$");
+		Letter<Content> aUrgent1 = new UrgentLetter(new RegisteredLetter(
+				aLetter));
+		Letter<Content> aUrgent2 = new RegisteredLetter(new UrgentLetter(
+				aLetter));
+		
+		System.out.println(aUrgent1.getSender().getName()
+				+ " a envoy√© une lettre √† " + aUrgent1.getReceiver().getName()
+				+ " ce qui lui a co√ªt√© : " + aUrgent1.getCost() + "$\n\n");
+		System.out.println(aUrgent2.getSender().getName()
+				+ " a envoy√© une lettre √† " + aUrgent2.getReceiver().getName()
+				+ " ce qui lui a co√ªt√© : " + aUrgent2.getCost() + "$");
+
+		disneyLand.distributeLetters();
+
+	}
 }

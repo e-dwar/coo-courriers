@@ -22,6 +22,6 @@ public class SimpleLetter extends Letter<Text> {
 
 	@Override
 	public void doAction() {
-		this.setOpened(true);	
+		super.doAction();	
 	}
 }
