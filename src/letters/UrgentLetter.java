@@ -17,11 +17,6 @@ public class UrgentLetter extends LetterDecorator {
 	public double getCost() {
 		return this.letter.getCost() * 2;
 	}
-
-	@Override
-	public void doAction() {
-		//Need to be done.
-	}
 	
 	@Override
 	public boolean isUrgent(){

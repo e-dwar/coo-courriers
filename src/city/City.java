@@ -1,6 +1,7 @@
 package city;
 
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import letters.Letter;
 
 public class City {
@@ -9,14 +10,14 @@ public class City {
 	 * Attributes
 	 */
 	protected String name;
-	protected ArrayList<Letter<?>> postBox;
+	protected CopyOnWriteArrayList<Letter<?>> postBox;
 
 	/*
 	 * Constructor
 	 */
 	public City(String name) {
 		this.name = name;
-		postBox = new ArrayList<Letter<?>>();
+		postBox = new CopyOnWriteArrayList<Letter<?>>();
 	}
 
 	/*
@@ -47,7 +48,7 @@ public class City {
 	 * 
 	 * @return the postBox
 	 */
-	public ArrayList<Letter<?>> getPostBox() {
+	public CopyOnWriteArrayList<Letter<?>> getPostBox() {
 		return postBox;
 	}
 
@@ -57,15 +58,26 @@ public class City {
 	 * @param letter
 	 */
 	protected void addLetter(Letter<?> letter) {
-		if (!postBox.contains(letter))
+		if (!postBox.contains(letter)){
+			System.out.println("-> " + letter.getSender().getName() + " mails to " + letter.getReceiver().getName());
+			System.out.println("- " + letter.getCost() + " are debited from " + letter.getSender().getName() + " account whose balance is now " + letter.getSender().getBankAccount().getAmount());
 			postBox.add(letter);
+			
+		}
 	}
 
 	/**
 	 * Distributes all the letters contained in the postBox.
 	 */
 	public void distributeLetters() {
-
+		if(!postBox.isEmpty()){
+			for(Letter<?> letterTemp : this.postBox){
+				letterTemp.getReceiver().receiveLetter(letterTemp);
+				System.out.println("<- " + letterTemp.getSender().getName() + " receives a letter from " + letterTemp.getReceiver().getName());
+				System.out.println("- Sender account = " + letterTemp.getSender().getBankAccount().getAmount());
+				System.out.println("- Receiver account = " + letterTemp.getReceiver().getBankAccount().getAmount() + "\n\n\n");
+			}
+		}
 	}
 
 }

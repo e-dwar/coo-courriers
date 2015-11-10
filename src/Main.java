@@ -2,6 +2,7 @@ import city.BankAccount;
 import city.City;
 import city.Inhabitant;
 import content.*;
+import exceptions.NotEnoughMoneyException;
 import letters.*;
 
 public class Main {
@@ -17,22 +18,6 @@ public class Main {
 
 	public static void run() {
 
-		/*
-		 * Letter souha = new SimpleLetter(new Text("allo Souha"));
-		 * 
-		 * Letter valentin = new PromisoryNote( new SimpleLetter(new
-		 * Text("allo Valentin")), new Money(1) );
-		 * 
-		 * Letter edouard = new PromisoryNote( new PromisoryNote( new
-		 * SimpleLetter(new Text("allo Edouard")), new Money(2) ), new Money(1)
-		 * );
-		 * 
-		 * System.out.println("\n----"); souha.print();
-		 * System.out.println("\n----"); valentin.print();
-		 * System.out.println("\n----"); edouard.print();
-		 * System.out.println("\n----");
-		 */
-
 		/**
 		 * Nous devons : - Créer une ville - Créer 100 habitants dans cette
 		 * ville - Créer une méthode pour générer aléatoirement des courriers -
@@ -42,9 +27,9 @@ public class Main {
 		City disneyLand = new City("Disney Land");
 
 		Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand,
-				new BankAccount(5000));
+				new BankAccount(5000.0));
 		Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand,
-				new BankAccount(5000));
+				new BankAccount(5000.0));
 
 		Letter<Text> aLetter = new SimpleLetter(mickey, minnie, new Text(
 				"I need money !"));
@@ -52,6 +37,13 @@ public class Main {
 		Letter<Money> aPromisory = new PromisoryNote(minnie, mickey, new Money(
 				150));
 
+		try {
+			mickey.sendLetter(aRegistered);
+			minnie.sendLetter(aPromisory);
+		} catch (NotEnoughMoneyException exception) {
+			System.out.println("Error : " + exception.getMessage());
+		}
+		/*
 		System.out.println(aLetter.getSender().getName()
 				+ " a envoyé une lettre à " + aLetter.getReceiver().getName()
 				+ " ce qui lui a coûté : " + aLetter.getCost() + "$");
@@ -65,13 +57,12 @@ public class Main {
 				aLetter));
 		Letter<Content> aUrgent2 = new RegisteredLetter(new UrgentLetter(
 				aLetter));
-		
 		System.out.println(aUrgent1.getSender().getName()
 				+ " a envoyé une lettre à " + aUrgent1.getReceiver().getName()
 				+ " ce qui lui a coûté : " + aUrgent1.getCost() + "$\n\n");
 		System.out.println(aUrgent2.getSender().getName()
 				+ " a envoyé une lettre à " + aUrgent2.getReceiver().getName()
-				+ " ce qui lui a coûté : " + aUrgent2.getCost() + "$");
+				+ " ce qui lui a coûté : " + aUrgent2.getCost() + "$");*/
 
 		disneyLand.distributeLetters();
 

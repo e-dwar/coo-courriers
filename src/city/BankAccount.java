@@ -5,12 +5,12 @@ public class BankAccount {
 	/*
 	 * Attributes
 	 */
-	protected int amount;
+	protected double amount;
 
 	/*
 	 * Constructor
 	 */
-	public BankAccount(int amount) {
+	public BankAccount(double amount) {
 		this.amount = amount;
 	}
 
@@ -20,10 +20,10 @@ public class BankAccount {
 	 */
 
 	/**
-	 * Returns the value of the attribute amout.
+	 * Returns the value of the attribute amount.
 	 * @return the amount
 	 */
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
@@ -31,7 +31,7 @@ public class BankAccount {
 	 * Adds money of the account.
 	 * @param money
 	 */
-	public void credit(int money){
+	public void credit(double money){
 		this.amount += money; 
 	}
 	
@@ -39,7 +39,7 @@ public class BankAccount {
 	 * Withdraws money from the account.
 	 * @param money
 	 */
-	public void debit(int money){
+	public void debit(double money){
 		this.amount -= money;
 	}
 }

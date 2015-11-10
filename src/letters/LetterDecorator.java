@@ -8,15 +8,18 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 * Attributes
 	 */
 	protected Letter<?> letter;
-	protected boolean isValid;
 
 	/*
 	 * Constructor
 	 */
 	public LetterDecorator(Letter<?> letter) {
 		super(letter.getSender(), letter.getReceiver(), letter.getContent());
-		this.letter = letter;
-		this.isValid = !letter.isUrgent();
+		if(!letter.isUrgent()){
+			this.letter = letter;
+		}
+		else {
+			throw new IllegalArgumentException("This letter is not well formed.");
+		}
 	}
 
 	/*
@@ -30,8 +33,4 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 */
 	public abstract double getCost();
 	
-	public boolean isValid() {
-		return isValid && this.letter.isValid();
-	}
-
 }
