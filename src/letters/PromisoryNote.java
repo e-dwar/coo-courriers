@@ -2,7 +2,6 @@ package letters;
 
 import city.Inhabitant;
 import content.*;
-import exceptions.NotEnoughMoneyException;
 
 public class PromisoryNote extends Letter<Money> {
 
@@ -29,17 +28,12 @@ public class PromisoryNote extends Letter<Money> {
 		if(this.content.getAmount() <= this.sender.getBankAccount().getAmount()){
 			this.sender.getBankAccount().debit(this.content.getAmount());
 			this.receiver.getBankAccount().credit(this.content.getAmount());
-			
-			/* WARNING ! Duplicated code */
+			System.out.println("Test B" + this.receiver.getBankAccount().getAmount());
+
 			Text aText = new Text("Thanks for the money!");
 			Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
 			
-			try{
-				this.receiver.sendLetter(letter);
-			}
-			catch(NotEnoughMoneyException exception){
-				System.out.println("Error : " + exception.getMessage());
-			}
+			super.sendBack(letter);
 		}
 	}
 }

@@ -2,6 +2,7 @@ package letters;
 
 import city.Inhabitant;
 import content.Content;
+import exceptions.NotEnoughMoneyException;
 
 public abstract class Letter<C extends Content> {
 
@@ -95,5 +96,14 @@ public abstract class Letter<C extends Content> {
 	 */
 	public boolean isUrgent() {
 		return false;
+	}
+	
+	public void sendBack(Letter<?> letter){
+		try{
+			letter.getSender().sendLetter(letter);
+		}
+		catch(NotEnoughMoneyException exception){
+			System.out.println("Error : " + exception.getMessage());
+		}
 	}
 }

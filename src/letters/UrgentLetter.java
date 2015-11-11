@@ -23,4 +23,7 @@ public class UrgentLetter extends LetterDecorator {
 		return true;
 	}
 
+	public void doAction(){
+		this.letter.doAction();
+	}
 }

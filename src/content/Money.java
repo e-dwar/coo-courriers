@@ -4,12 +4,12 @@ public class Money implements Content {
 	/*
 	 * Attributes
 	 */
-    private int amount;
+    private double amount;
 
     /*
 	 * Constructor
 	 */
-    public Money (int amount) {
+    public Money (double amount) {
         this.amount = amount;
     }
 
@@ -21,7 +21,7 @@ public class Money implements Content {
      * Returns the value of the attribute amount.
      * @return the amount
      */
-    public int getAmount () {
+    public double getAmount () {
         return this.amount;
     }
 }

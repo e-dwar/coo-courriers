@@ -1,7 +1,6 @@
 package letters;
 
 import content.Text;
-import exceptions.NotEnoughMoneyException;
 
 public class RegisteredLetter extends LetterDecorator {
 
@@ -22,15 +21,10 @@ public class RegisteredLetter extends LetterDecorator {
 
 	@Override
 	public void doAction() {
-		super.doAction();
+		this.letter.doAction();
 		Text aText = new Text("I've well received your letter.");
 		Letter<?> letter = new AcknowledgmentOfReceipt(this.receiver, this.sender, aText);
-		
-		try {
-			this.receiver.sendLetter(letter);
-		} catch(NotEnoughMoneyException exception){
-			System.out.println("Error : " + exception.getMessage());
-		}
+		super.sendBack(letter);
 	}
 
 }
