@@ -20,11 +20,11 @@ public class RegisteredLetter extends LetterDecorator {
 	}
 
 	@Override
-	public void doAction() {
+	public void doAction(){
 		this.letter.doAction();
 		Text aText = new Text("I've well received your letter.");
 		Letter<?> letter = new AcknowledgmentOfReceipt(this.receiver, this.sender, aText);
-		super.sendBack(letter);
+		letter.getSender().sendLetter(letter);
 	}
 
 }

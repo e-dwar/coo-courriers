@@ -32,8 +32,8 @@ public class PromisoryNote extends Letter<Money> {
 
 			Text aText = new Text("Thanks for the money!");
 			Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
+			letter.getSender().sendLetter(letter);
 			
-			super.sendBack(letter);
 		}
 	}
 }

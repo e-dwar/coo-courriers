@@ -27,6 +27,15 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 */
 
 	/**
+	 * Returns the value of the attribute opened.
+	 * 
+	 * @return the opened
+	 */
+	public Boolean getOpened() {
+		return this.letter.getOpened();
+	}
+
+	/**
 	 * Returns the letter's cost.
 	 * 
 	 * @return the cost

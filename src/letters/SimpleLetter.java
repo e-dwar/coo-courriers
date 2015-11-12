@@ -21,7 +21,7 @@ public class SimpleLetter extends Letter<Text> {
 	}
 
 	@Override
-	public void doAction() {
+	public void doAction(){
 		super.doAction();	
 	}
 }

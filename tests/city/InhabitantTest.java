@@ -3,8 +3,6 @@ package city;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-
-import exceptions.NotEnoughMoneyException;
 import letters.Letter;
 import letters.LetterFactory;
 
@@ -44,34 +42,26 @@ public class InhabitantTest {
 	public void sendLetterTest(){
 		Letter<?> aSimpleLetter = this.aLetterFactory.createSimpleLetter();
 		assertTrue(aInhabitant.getCity().getPostBox().isEmpty());
-		try {
-			aInhabitant.sendLetter(aSimpleLetter);
-		} catch (NotEnoughMoneyException e) {}
+		aInhabitant.sendLetter(aSimpleLetter);
 		assertFalse(aInhabitant.getCity().getPostBox().isEmpty());
 		assertTrue(aInhabitant.getCity().getPostBox().contains(aSimpleLetter));
 	}
 	
-	@Test(expected=NotEnoughMoneyException.class)
-	public void sendLetterWithouthEnoughMoneyTest() throws NotEnoughMoneyException{
+	@Test
+	public void checkLetterTest(){
+		Letter<?> aSimple = this.aLetterFactory.createSimpleLetter();
 		Letter<?> aPromisory = this.aLetterFactory.createPromisoryNote(1000000.0);
-		aInhabitant.sendLetter(aPromisory);
+		assertTrue(aInhabitant.checkLetter(aSimple));
+		assertFalse(aInhabitant.checkLetter(aPromisory));
 	}
 	
 	@Test
 	public void receiveLetterTest(){
 		Letter<?> aUrgentLetter = this.aLetterFactory.createUwithRLwithPN();
-		assertEquals(1000.0, aUrgentLetter.getReceiver().getBankAccount().getAmount(), 0.01);
 		assertFalse(aUrgentLetter.getOpened());
-		/*System.out.println("DEBUG A = " + aUrgentLetter.getReceiver().getBankAccount().getAmount());
-		System.out.println("DEBUG B = " + aUrgentLetter.getSender().getBankAccount().getAmount());*/
 		aInhabitant.receiveLetter(aUrgentLetter);
-		
-		/*System.out.println("DEBUG A = " +aUrgentLetter.getReceiver().getBankAccount().getAmount());
-		System.out.println("DEBUG B = " + aUrgentLetter.getSender().getBankAccount().getAmount());*/
-		assertEquals(1199.0, aUrgentLetter.getReceiver().getBankAccount().getAmount(), 0.01);
-		//assertTrue(aUrgentLetter.getOpened());
+		assertTrue(aUrgentLetter.getOpened());
 		aInhabitant.receiveLetter(aUrgentLetter);
-		assertEquals(1199.0, aUrgentLetter.getReceiver().getBankAccount().getAmount(), 0.01);
 		assertTrue(aUrgentLetter.getOpened());
 	}
 }

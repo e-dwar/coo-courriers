@@ -1,6 +1,4 @@
 package city;
-
-import exceptions.NotEnoughMoneyException;
 import letters.Letter;
 
 public class Inhabitant {
@@ -52,16 +50,16 @@ public class Inhabitant {
 	/**
 	 * Adds a letter to the postBox contained in the attribute city.
 	 * @param letter
-	 * @throws NotEnoughMoneyException 
 	 */
-	public void sendLetter(Letter<?> letter) throws NotEnoughMoneyException{
-		if(letter.getCost() <= this.getBankAccount().getAmount()){
+	public void sendLetter(Letter<?> letter){
+		if(checkLetter(letter)){
 			this.bankAccount.debit(letter.getCost());
 			this.city.addLetter(letter);
 		}
-		else {
-			throw new NotEnoughMoneyException("There is not enough money in the sender's account.");
-		}
+	}
+	
+	public boolean checkLetter(Letter<?> letter){
+		return letter.getCost() <= this.bankAccount.getAmount();
 	}
 	
 	/**
