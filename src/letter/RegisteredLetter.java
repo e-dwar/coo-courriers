@@ -26,5 +26,9 @@ public class RegisteredLetter extends LetterDecorator {
 		Letter<?> letter = new AcknowledgmentOfReceipt(this.receiver, this.sender, aText);
 		letter.getSender().sendLetter(letter);
 	}
+	
+	public String toString() {
+		return "registered letter";
+	}
 
 }

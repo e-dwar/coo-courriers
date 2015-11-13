@@ -1,6 +1,5 @@
 package letter;
 
-import out.TraceBuffer;
 import city.Inhabitant;
 import content.*;
 
@@ -29,11 +28,14 @@ public class PromisoryNote extends Letter<Money> {
 		if(this.content.getAmount() <= this.sender.getBankAccount().getAmount()){
 			this.sender.getBankAccount().debit(this.content.getAmount());
 			this.receiver.getBankAccount().credit(this.content.getAmount());
-			TraceBuffer.add("Test B" + this.receiver.getBankAccount().getAmount());
 			Text aText = new Text("Thanks for the money!");
 			Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
 			letter.getSender().sendLetter(letter);
 			
 		}
+	}
+	
+	public String toString() {
+		return "promisory note (" + this.getContent().getAmount() + ")";
 	}
 }

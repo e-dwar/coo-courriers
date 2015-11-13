@@ -10,11 +10,11 @@ public class Messages {
 	}
 
 	public static String letterSent(Letter<?> letter) {
-		return "-> " + letter.getSender() + " mails to " + letter.getReceiver();
+		return "-> " + letter.getSender() + " mails a " + letter + " to " + letter.getReceiver();
 	}
 
 	public static String letterReceived(Letter<?> letter) {
-		return "<- " + letter.getReceiver() + " receives a letter from " + letter.getSender();
+		return "<- " + letter.getReceiver() + " receives a " + letter + " from " + letter.getSender();
 	}
 
 	public static String senderAccount(Inhabitant sender) {
