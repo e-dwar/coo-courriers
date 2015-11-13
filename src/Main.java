@@ -19,8 +19,8 @@ public class Main {
 			trace2();
 		} catch (MalformedLetterException e) {
 			nMalformed++;
-			System.out.println("lettres malformées: " + nMalformed + ".");
 		}
+		System.out.println("lettres malformées: " + nMalformed + ".");
 	}
 
 	public static void trace2() {
