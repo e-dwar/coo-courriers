@@ -5,8 +5,20 @@ import letter.Letter;
 
 public class Messages {
 	
-	public static String mailSent(Letter<?> letter) {
+	public static String letterSent(Letter<?> letter) {
 		return "-> " + letter.getSender().getName() + " mails to " + letter.getReceiver().getName();
+	}
+	
+	public static String letterReceived(Letter<?> letter) {
+		return "<- " + letter.getSender().getName() + " receives a letter from " + letter.getReceiver().getName();
+	}
+	
+	public static String senderAccount(Inhabitant sender) {
+		return "- Sender account = " + sender.getBankAccount().getAmount();
+	}
+	
+	public static String receiverAccount(Inhabitant receiver) {
+		return "- Receiver account = " + receiver.getBankAccount().getAmount();
 	}
 	
 	public static String senderDebited(Letter<?> letter){

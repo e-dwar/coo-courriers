@@ -1,4 +1,6 @@
 import java.util.Random;
+
+import out.TraceBuffer;
 import city.*;
 import content.*;
 import letter.*;
@@ -16,7 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 		int nMalformed = 0;
 		try {
-			trace2();
+			trace1();
 		} catch (MalformedLetterException e) {
 			nMalformed++;
 		}
@@ -54,6 +56,7 @@ public class Main {
 		mickey.sendLetter(aRegistered);
 		minnie.sendLetter(aPromisory);
 		disneyLand.distributeLetters();
+		TraceBuffer.flush();
 	}
 
 	public static void addAHundredInhabitants(City city) {

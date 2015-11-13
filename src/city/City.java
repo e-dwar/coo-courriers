@@ -97,7 +97,7 @@ public class City {
 	 */
 	protected void addLetter(Letter<?> letter) {
 		if (!postBox.contains(letter)) {
-			TraceBuffer.add(Messages.mailSent(letter));
+			TraceBuffer.add(Messages.letterSent(letter));
 			TraceBuffer.add(Messages.senderDebited(letter));
 			postBox.add(letter);
 		}
@@ -107,11 +107,12 @@ public class City {
 	 * Distributes all the letters contained in the postBox.
 	 */
 	public void distributeLetters() {
-		for (Letter<?> letterTemp : this.postBox) {
-			letterTemp.getReceiver().receiveLetter(letterTemp);
-			System.out.println("<- " + letterTemp.getSender().getName() + " receives a letter from " + letterTemp.getReceiver().getName());
-			System.out.println("- Sender account = " + letterTemp.getSender().getBankAccount().getAmount());
-			System.out.println("- Receiver account = " + letterTemp.getReceiver().getBankAccount().getAmount() + "\n\n\n");
+		for (Letter<?> letter : this.postBox) {
+			letter.getReceiver().receiveLetter(letter);
+			TraceBuffer.add(Messages.letterReceived(letter));
+			TraceBuffer.add(Messages.senderAccount(letter.getSender()));
+			TraceBuffer.add(Messages.receiverAccount(letter.getReceiver()));
+			TraceBuffer.add("\n\n");
 		}
 	}
 

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class TraceBuffer {
 	
-	public static ArrayList<String> buffer = new ArrayList<String>();
+	private static ArrayList<String> buffer = new ArrayList<String>();
 	
 	public static void add(String line){
 		buffer.add(line);
