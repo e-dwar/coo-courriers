@@ -36,7 +36,7 @@ public class Main {
 		City disneyLand = new City("Disney Land");
 		addInhabitants(disneyLand, nInhabitants);
 		for (i = 0; i < nDays; i++) {
-			nLetters = getRandomInt() % disneyLand.size();
+			nLetters = getRandomInt() % disneyLand.size() + 1;
 			for (j = 0; j < nLetters; j++) {
 				try {
 					disneyLand.getPostBox().add(getRandomLetter(disneyLand));
@@ -86,11 +86,19 @@ public class Main {
 		BankAccount bankAccount;
 		for (i = 0; i < n; i++) {
 			name = "Person #" + (i + 1);
-			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
+			bankAccount = new BankAccount((getRandomInt() % 5 + 1) * 1000);
 			city.addInhabitant(new Inhabitant(name, bankAccount));
 		}
 	}
 
+	/**
+	 * Gives a random combination of letters.
+	 * 
+	 * @param city
+	 *            The city from which to pick a sender and a receiver.
+	 * @return A random letter.
+	 * @throws Exception
+	 */
 	public static Letter<?> getRandomLetter(City city) throws Exception {
 
 		// 000 simple letter
@@ -144,7 +152,7 @@ public class Main {
 	 * @return A promisory note with a random amount of money.
 	 */
 	public static Letter<?> getRandomPromisoryNote(Inhabitant sender, Inhabitant receiver) {
-		Money content = new Money(1000 * (getRandomInt() % 5));
+		Money content = new Money(10 * (getRandomInt() % 5 + 1));
 		return new PromisoryNote(sender, receiver, content);
 	}
 

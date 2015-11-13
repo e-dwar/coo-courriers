@@ -92,10 +92,10 @@ public class Inhabitant {
 	 * @param letter
 	 */
 	public void receiveLetter(Letter<?> letter) {
-		if (!letter.getOpened()) {
-			letter.doAction();
-		} else {
+		if (letter.getOpened()) {
 			TraceBuffer.add(Messages.alreadyOpen());
+		} else {
+			letter.doAction();
 		}
 	}
 
