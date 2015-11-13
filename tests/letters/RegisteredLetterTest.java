@@ -1,6 +1,7 @@
 package letters;
 
 import static org.junit.Assert.*;
+import letter.Letter;
 
 import org.junit.*;
 

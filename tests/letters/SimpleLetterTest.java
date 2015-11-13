@@ -1,5 +1,7 @@
 package letters;
 
+import letter.Letter;
+
 import org.junit.Test;
 
 public class SimpleLetterTest extends LetterTest {

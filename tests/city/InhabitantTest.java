@@ -3,7 +3,8 @@ package city;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-import letters.Letter;
+
+import letter.Letter;
 import letters.LetterFactory;
 
 public class InhabitantTest {

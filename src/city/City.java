@@ -2,7 +2,7 @@ package city;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import letters.Letter;
+import letter.Letter;
 
 public class City {
 

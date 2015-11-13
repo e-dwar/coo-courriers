@@ -1,4 +1,4 @@
-package letters;
+package letter;
 
 import city.Inhabitant;
 import content.Content;

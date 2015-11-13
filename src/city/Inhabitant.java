@@ -1,5 +1,5 @@
 package city;
-import letters.Letter;
+import letter.Letter;
 
 public class Inhabitant {
 

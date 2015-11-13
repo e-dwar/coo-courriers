@@ -1,5 +1,9 @@
 package letters;
 
+import letter.PromisoryNote;
+import letter.RegisteredLetter;
+import letter.SimpleLetter;
+import letter.UrgentLetter;
 import city.*;
 import content.*;
 

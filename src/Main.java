@@ -3,7 +3,7 @@ import city.City;
 import city.Inhabitant;
 import content.*;
 import exceptions.NotEnoughMoneyException;
-import letters.*;
+import letter.*;
 
 public class Main {
 

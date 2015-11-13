@@ -1,4 +1,4 @@
-package letters;
+package letter;
 
 public class UrgentLetter extends LetterDecorator {
 
