@@ -9,6 +9,10 @@ public class TraceBuffer {
 		buffer.add(line.toString());
 	}
 	
+	public static void error (Exception e) {
+		add("Error: " + e);
+	}
+	
 	public static void cr () {
 		add("\n");
 	}
