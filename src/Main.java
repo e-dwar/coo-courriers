@@ -9,13 +9,13 @@ import letter.*;
 public class Main {
 
 	public static Random rdm = new Random(123456789);
-	public static SimpleLetter aLetter;
-	public static PromisoryNote aPromisory;
-	public static RegisteredLetter aRegistered;
 	public static int nMalformed = 0;
 
 	public static void run() {
+		trace2();
+	}
 
+	public static void trace2() {
 		int i;
 
 		/**
@@ -35,10 +35,12 @@ public class Main {
 		for (i = 0; i < 10; i++) {
 			System.out.println(disneyLand.getInhabitant(getRandomInt() % disneyLand.size()));
 		}
-
 	}
 
 	public static void trace1() {
+		SimpleLetter aLetter;
+		PromisoryNote aPromisory;
+		RegisteredLetter aRegistered;
 		City disneyLand = new City("Disney Land");
 		Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand, new BankAccount(5000.0));
 		Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand, new BankAccount(5000.0));
@@ -64,7 +66,7 @@ public class Main {
 		double cost = letter.getCost();
 		System.out.println(sender + " a envoyé une lettre à " + receiver + " ce qui lui a coûté : " + cost + "$");
 	}
-	
+
 	public static int getRandomInt() {
 		return rdm.nextInt(Integer.MAX_VALUE);
 	}
