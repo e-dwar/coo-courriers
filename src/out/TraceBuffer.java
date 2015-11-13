@@ -5,8 +5,12 @@ public class TraceBuffer {
 	
 	private static ArrayList<String> buffer = new ArrayList<String>();
 	
-	public static void add(String line){
-		buffer.add(line);
+	public static void add(Object line){
+		buffer.add(line.toString());
+	}
+	
+	public static void cr () {
+		add("\n");
 	}
 	
 	public static void flush(){

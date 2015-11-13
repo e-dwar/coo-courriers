@@ -1,5 +1,7 @@
 package city;
 
+import out.Messages;
+import out.TraceBuffer;
 import letter.Letter;
 
 public class Inhabitant {
@@ -90,14 +92,14 @@ public class Inhabitant {
 	 * @param letter
 	 */
 	public void receiveLetter(Letter<?> letter) {
-		if (!letter.getOpened())
+		if (!letter.getOpened()) {
 			letter.doAction();
-		else
-			System.out.println("This letter has already been opened.");
+		} else {
+			TraceBuffer.add(Messages.alreadyOpen());
+		}
 	}
-	
-	
-	public String toString () {
+
+	public String toString() {
 		return this.name;
 	}
 

@@ -25,4 +25,17 @@ public class Messages {
 		Inhabitant sender = letter.getSender();
 		return "- " + letter.getCost() + " are debited from " + sender.getName() + " account whose balance is now " + sender.getBankAccount().getAmount();
 	}
+	
+	public static String alreadyOpen() {
+		return "This letter has already been opened.";
+	}
+	
+	// DEBUG
+	
+	public static String xSentToYWithCostDbg(Letter<?> letter) {
+		String sender = letter.getSender().getName();
+		String receiver = letter.getReceiver().getName();
+		double cost = letter.getCost();
+		return sender + " a envoyé une lettre à " + receiver + " ce qui lui a coûté : " + cost + "$";
+	}
 }

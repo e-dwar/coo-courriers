@@ -1,5 +1,6 @@
 import java.util.Random;
 
+import out.Messages;
 import out.TraceBuffer;
 import city.*;
 import content.*;
@@ -16,26 +17,27 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
-		int nMalformed = 0;
 		try {
-			trace1();
+			run1();
 		} catch (MalformedLetterException e) {
-			nMalformed++;
+			TraceBuffer.add("Error: malformed letter");
+		} catch (Exception e) {
+			TraceBuffer.add("Error: " + e.getMessage());
 		}
-		System.out.println("lettres malformées: " + nMalformed + ".");
+		TraceBuffer.flush();
 	}
 
-	public static void trace2() {
+	public static void run2() {
 		int i, index;
 		City disneyLand = new City("Disney Land");
 		addAHundredInhabitants(disneyLand);
 		for (i = 0; i < 10; i++) {
 			index = getRandomInt() % disneyLand.size();
-			System.out.println(disneyLand.getInhabitant(index));
+			TraceBuffer.add(disneyLand.getInhabitant(index));
 		}
 	}
 
-	public static void trace1() {
+	public static void run1() {
 		SimpleLetter aLetter;
 		PromisoryNote aPromisory;
 		RegisteredLetter aRegistered;
@@ -45,18 +47,17 @@ public class Main {
 		aLetter = new SimpleLetter(mickey, minnie, new Text("I need money !"));
 		aRegistered = new RegisteredLetter(aLetter);
 		aPromisory = new PromisoryNote(minnie, mickey, new Money(150));
-		printSent(aLetter);
-		printSent(aPromisory);
-		System.out.println("Prix d'une registered = " + aRegistered.getCost() + "$");
+		TraceBuffer.add(Messages.xSentToYWithCostDbg(aLetter));
+		TraceBuffer.add(Messages.xSentToYWithCostDbg(aPromisory));
+		TraceBuffer.add("Prix d'une registered = " + aRegistered.getCost() + "$");
 		Letter<Content> aUrgent1 = new UrgentLetter(new RegisteredLetter(aLetter));
 		Letter<Content> aUrgent2 = new RegisteredLetter(new UrgentLetter(aLetter));
-		printSent(aUrgent1);
-		System.out.println("\n");
-		printSent(aUrgent2);
+		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent1));
+		TraceBuffer.cr();
+		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent2));
 		mickey.sendLetter(aRegistered);
 		minnie.sendLetter(aPromisory);
 		disneyLand.distributeLetters();
-		TraceBuffer.flush();
 	}
 
 	public static void addAHundredInhabitants(City city) {
@@ -68,13 +69,6 @@ public class Main {
 			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
 			city.addInhabitant(new Inhabitant(name, bankAccount));
 		}
-	}
-
-	public static void printSent(Letter<?> letter) {
-		String sender = letter.getSender().getName();
-		String receiver = letter.getReceiver().getName();
-		double cost = letter.getCost();
-		System.out.println(sender + " a envoyé une lettre à " + receiver + " ce qui lui a coûté : " + cost + "$");
 	}
 
 	public static int getRandomInt() {
