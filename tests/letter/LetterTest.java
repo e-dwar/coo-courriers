@@ -9,21 +9,24 @@ public abstract class LetterTest {
 
 	protected Letter<?> letter;
 	protected LetterFactory letterFactory = new LetterFactory();
-	
-	protected final double COST_OF_SIMPLE_LETTER = 1 ;
-	
+	protected final double COST_OF_SIMPLE_LETTER = 1;
+	public abstract Letter<?> createLetter();
+
 	@Before
-	public void init(){
+	public void init() {
 		letter = createLetter();
 	}
-	
-	public void doActionTest(){
+
+	@Test
+	public void positiveCostTest() {
+		assertTrue(letter.getCost() > 0);
+	}
+
+	public void doActionTest() {
 		assertFalse(letter.getOpened());
 		letter.doAction();
 		assertTrue(letter.getOpened());
-		
+
 	}
-	
-	public abstract Letter<?> createLetter();
 
 }
