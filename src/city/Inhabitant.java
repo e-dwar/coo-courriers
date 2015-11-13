@@ -1,4 +1,5 @@
 package city;
+
 import letter.Letter;
 
 public class Inhabitant {
@@ -9,7 +10,7 @@ public class Inhabitant {
 	protected String name;
 	protected City city;
 	protected BankAccount bankAccount;
-	
+
 	/*
 	 * Constructor
 	 */
@@ -22,9 +23,10 @@ public class Inhabitant {
 	/*
 	 * Methods
 	 */
-	
+
 	/**
 	 * Returns the value of the attribute name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
@@ -33,6 +35,7 @@ public class Inhabitant {
 
 	/**
 	 * Returns the value of the attribute city.
+	 * 
 	 * @return the city
 	 */
 	public City getCity() {
@@ -41,35 +44,41 @@ public class Inhabitant {
 
 	/**
 	 * Returns the value of the attribute bankAccount.
+	 * 
 	 * @return the bankAccount
 	 */
 	public BankAccount getBankAccount() {
 		return bankAccount;
 	}
-	
+
 	/**
 	 * Adds a letter to the postBox contained in the attribute city.
+	 * 
 	 * @param letter
+	 * @return TODO
 	 */
-	public void sendLetter(Letter<?> letter){
-		if(checkLetter(letter)){
+	public boolean sendLetter(Letter<?> letter) {
+		boolean isValid = checkLetter(letter);
+		if (isValid) {
 			this.bankAccount.debit(letter.getCost());
 			this.city.addLetter(letter);
 		}
+		return isValid;
 	}
-	
-	public boolean checkLetter(Letter<?> letter){
+
+	public boolean checkLetter(Letter<?> letter) {
 		return letter.getCost() <= this.bankAccount.getAmount();
 	}
-	
+
 	/**
 	 * Executes the action of the received letter.
+	 * 
 	 * @param letter
 	 */
-	public void receiveLetter(Letter<?> letter){
-		if(!letter.getOpened())
+	public void receiveLetter(Letter<?> letter) {
+		if (!letter.getOpened())
 			letter.doAction();
-		else 
+		else
 			System.out.println("This letter has already been opened.");
 	}
 

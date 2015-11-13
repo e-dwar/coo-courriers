@@ -1,21 +1,20 @@
 package letter;
 
+import testdouble.InhabitantDouble;
 import letter.PromisoryNote;
 import letter.RegisteredLetter;
 import letter.SimpleLetter;
 import letter.UrgentLetter;
-import city.*;
 import content.*;
 
 public class LetterFactory {
 
-	private Inhabitant sender;
-	private Inhabitant receiver;
+	private InhabitantDouble sender;
+	private InhabitantDouble receiver;
 
 	public LetterFactory() {
-		City cityLambda = new City("Lambda");
-		sender = new Inhabitant("Sender", cityLambda, new BankAccount(1000.0));
-		receiver = new Inhabitant("Receiver", cityLambda, new BankAccount(1000.0));
+		sender = new InhabitantDouble("Sender");
+		receiver = new InhabitantDouble("Receiver");
 	}
 
 	public SimpleLetter createSimpleLetter() {
