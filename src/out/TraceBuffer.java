@@ -14,7 +14,7 @@ public class TraceBuffer {
 	}
 	
 	public static void cr () {
-		add("\n");
+		add("");
 	}
 	
 	public static void flush(){

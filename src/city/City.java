@@ -1,9 +1,6 @@
 package city;
 
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import out.Messages;
 import out.TraceBuffer;
 
 import letter.Letter;
@@ -14,7 +11,8 @@ public class City {
 	 * Attributes
 	 */
 	protected String name;
-	protected CopyOnWriteArrayList<Letter<?>> postBox;
+	protected ArrayList<Letter<?>> round;
+	protected ArrayList<Letter<?>> postBox;
 	protected ArrayList<Inhabitant> inhabitants;
 
 	/*
@@ -23,7 +21,7 @@ public class City {
 	public City(String name) {
 		this.name = name;
 		inhabitants = new ArrayList<Inhabitant>();
-		postBox = new CopyOnWriteArrayList<Letter<?>>();
+		postBox = new ArrayList<Letter<?>>();
 	}
 
 	/*
@@ -54,7 +52,7 @@ public class City {
 	 * 
 	 * @return the postBox
 	 */
-	public CopyOnWriteArrayList<Letter<?>> getPostBox() {
+	public ArrayList<Letter<?>> getPostBox() {
 		return postBox;
 	}
 
@@ -96,23 +94,17 @@ public class City {
 	 * @param letter
 	 */
 	protected void addLetter(Letter<?> letter) {
-		if (!postBox.contains(letter)) {
-			TraceBuffer.add(Messages.letterSent(letter));
-			TraceBuffer.add(Messages.senderDebited(letter));
-			postBox.add(letter);
-		}
+		postBox.add(letter);
 	}
 
 	/**
 	 * Distributes all the letters contained in the postBox.
 	 */
 	public void distributeLetters() {
-		for (Letter<?> letter : this.postBox) {
+		round = postBox;
+		postBox = new ArrayList<Letter<?>>();
+		for (Letter<?> letter : round) {
 			letter.getReceiver().receiveLetter(letter);
-			TraceBuffer.add(Messages.letterReceived(letter));
-			TraceBuffer.add(Messages.senderAccount(letter.getSender()));
-			TraceBuffer.add(Messages.receiverAccount(letter.getReceiver()));
-			TraceBuffer.add("\n\n");
 		}
 	}
 

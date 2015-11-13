@@ -78,6 +78,8 @@ public class Inhabitant {
 		if (isValid) {
 			this.bankAccount.debit(letter.getCost());
 			this.city.addLetter(letter);
+			TraceBuffer.add(Messages.letterSent(letter));
+			TraceBuffer.add(Messages.senderDebited(letter));
 		}
 		return isValid;
 	}
@@ -92,11 +94,8 @@ public class Inhabitant {
 	 * @param letter
 	 */
 	public void receiveLetter(Letter<?> letter) {
-		if (letter.getOpened()) {
-			TraceBuffer.add(Messages.alreadyOpen());
-		} else {
-			letter.doAction();
-		}
+		TraceBuffer.add(Messages.letterReceived(letter));
+		letter.doAction();
 	}
 
 	public String toString() {

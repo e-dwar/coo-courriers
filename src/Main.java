@@ -29,22 +29,28 @@ public class Main {
 	 * Deuxième trace.
 	 */
 	public static void run2() {
+		Letter<?> letter;
 		int i, j;
 		int nInhabitants = 10;
 		int nLetters = 0;
 		int nDays = 3;
 		City disneyLand = new City("Disney Land");
 		addInhabitants(disneyLand, nInhabitants);
-		for (i = 0; i < nDays; i++) {
-			nLetters = getRandomInt() % disneyLand.size() + 1;
-			for (j = 0; j < nLetters; j++) {
-				try {
-					disneyLand.getPostBox().add(getRandomLetter(disneyLand));
-				} catch (Exception e) {
-					TraceBuffer.error(e);
+		for (i = 0; i <= nDays; i++) {
+			TraceBuffer.add(Messages.dayDbg(i + 1));
+			disneyLand.distributeLetters();
+			if (i < nDays) {
+				nLetters = getRandomInt() % disneyLand.size() + 1;
+				for (j = 0; j < nLetters; j++) {
+					try {
+						letter = getRandomLetter(disneyLand);
+						letter.getSender().sendLetter(letter);
+					} catch (Exception e) {
+						TraceBuffer.error(e);
+					}
 				}
 			}
-			disneyLand.distributeLetters();
+			TraceBuffer.flush();
 		}
 	}
 
