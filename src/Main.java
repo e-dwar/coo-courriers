@@ -1,21 +1,28 @@
 import java.util.Random;
-
-import city.BankAccount;
-import city.City;
-import city.Inhabitant;
+import city.*;
 import content.*;
 import letter.*;
 
 public class Main {
 
 	public static Random rdm = new Random(123456789);
-	public static int nMalformed = 0;
 
 	/**
 	 * Nous devons : - Créer une ville - Créer 100 habitants dans cette ville -
 	 * Créer une méthode pour générer aléatoirement des courriers - Créer une
 	 * méthode qui envoie des courriers sur plusieurs jours
 	 */
+
+	public static void main(String[] args) {
+		int nMalformed = 0;
+		try {
+			trace2();
+		} catch (MalformedLetterException e) {
+			nMalformed++;
+			System.out.println("lettres malformées: " + nMalformed + ".");
+		}
+	}
+
 	public static void trace2() {
 		int i, index;
 		City disneyLand = new City("Disney Land");
@@ -69,14 +76,5 @@ public class Main {
 
 	public static int getRandomInt() {
 		return rdm.nextInt(Integer.MAX_VALUE);
-	}
-
-	public static void main(String[] args) {
-		try {
-			trace2();
-		} catch (MalformedLetterException e) {
-			nMalformed++;
-			System.out.println("lettres malformées: " + nMalformed + ".");
-		}
 	}
 }
