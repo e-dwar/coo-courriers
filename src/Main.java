@@ -29,10 +29,13 @@ public class Main {
 	 * Deuxième trace.
 	 */
 	public static void run2() {
-		int i, j, nLetters = 0, days = 6;
+		int i, j;
+		int nInhabitants = 10;
+		int nLetters = 0;
+		int nDays = 3;
 		City disneyLand = new City("Disney Land");
-		addAHundredInhabitants(disneyLand);
-		for (i = 0; i < days; i++) {
+		addInhabitants(disneyLand, nInhabitants);
+		for (i = 0; i < nDays; i++) {
 			nLetters = getRandomInt() % disneyLand.size();
 			for (j = 0; j < nLetters; j++) {
 				try {
@@ -72,15 +75,16 @@ public class Main {
 	}
 
 	/**
-	 * Adds 100 inhabitant to the provided city.
+	 * Adds <code>n</code> inhabitant to the provided city.
 	 * 
 	 * @param city
+	 * @param n
 	 */
-	public static void addAHundredInhabitants(City city) {
+	public static void addInhabitants(City city, int n) {
 		int i;
 		String name;
 		BankAccount bankAccount;
-		for (i = 0; i < 100; i++) {
+		for (i = 0; i < n; i++) {
 			name = "Person #" + (i + 1);
 			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
 			city.addInhabitant(new Inhabitant(name, bankAccount));
