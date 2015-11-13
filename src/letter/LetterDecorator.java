@@ -18,7 +18,7 @@ public abstract class LetterDecorator extends Letter<Content> {
 			this.letter = letter;
 		}
 		else {
-			throw new IllegalArgumentException("This letter is not well formed.");
+			throw new MalformedLetterException();
 		}
 	}
 

@@ -50,7 +50,7 @@ public class CityTest {
 	}
 	
 	@Test
-	public void distributeLettersTest(){
+	public void distributeLettersTest() {
 		Letter<?> aPromisoryNote = this.aLetterFactory.createPromisoryNote();
 		Letter<?> aRegisteredLetter = this.aLetterFactory.createRLwithSL();
 		
