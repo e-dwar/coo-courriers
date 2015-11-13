@@ -11,24 +11,18 @@ public class Main {
 	public static Random rdm = new Random(123456789);
 	public static int nMalformed = 0;
 
-	public static void run() {
-		trace2();
-	}
-
+	/**
+	 * Nous devons : - Créer une ville - Créer 100 habitants dans cette ville -
+	 * Créer une méthode pour générer aléatoirement des courriers - Créer une
+	 * méthode qui envoie des courriers sur plusieurs jours
+	 */
 	public static void trace2() {
-		int i;
-
-		/**
-		 * Nous devons : - Créer une ville - Créer 100 habitants dans cette
-		 * ville - Créer une méthode pour générer aléatoirement des courriers -
-		 * Créer une méthode qui envoie des courriers sur plusieurs jours
-		 */
-
+		int i, index;
 		City disneyLand = new City("Disney Land");
 		addAHundredInhabitants(disneyLand);
-
 		for (i = 0; i < 10; i++) {
-			System.out.println(disneyLand.getInhabitant(getRandomInt() % disneyLand.size()));
+			index = getRandomInt() % disneyLand.size();
+			System.out.println(disneyLand.getInhabitant(index));
 		}
 	}
 
@@ -54,8 +48,8 @@ public class Main {
 		minnie.sendLetter(aPromisory);
 		disneyLand.distributeLetters();
 	}
-	
-	public static void addAHundredInhabitants(City city){
+
+	public static void addAHundredInhabitants(City city) {
 		int i;
 		String name;
 		BankAccount bankAccount;
@@ -63,7 +57,7 @@ public class Main {
 			name = "Person #" + (i + 1);
 			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
 			city.addInhabitant(new Inhabitant(name, bankAccount));
-		}		
+		}
 	}
 
 	public static void printSent(Letter<?> letter) {
@@ -79,7 +73,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			run();
+			trace2();
 		} catch (MalformedLetterException e) {
 			nMalformed++;
 			System.out.println("lettres malformées: " + nMalformed + ".");
