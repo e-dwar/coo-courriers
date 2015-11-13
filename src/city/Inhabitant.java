@@ -14,10 +14,14 @@ public class Inhabitant {
 	/*
 	 * Constructor
 	 */
-	public Inhabitant(String name, City city, BankAccount bankAccount) {
+	public Inhabitant(String name, BankAccount bankAccount) {
 		this.name = name;
-		this.city = city;
 		this.bankAccount = bankAccount;
+	}
+
+	public Inhabitant(String name, City city, BankAccount bankAccount) {
+		this(name, bankAccount);
+		this.setCity(city);
 	}
 
 	/*
@@ -40,6 +44,16 @@ public class Inhabitant {
 	 */
 	public City getCity() {
 		return city;
+	}
+
+	/**
+	 * Sets a new value to the attribute city.
+	 * 
+	 * @param city
+	 *            the city to set
+	 */
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	/**
@@ -80,6 +94,11 @@ public class Inhabitant {
 			letter.doAction();
 		else
 			System.out.println("This letter has already been opened.");
+	}
+	
+	
+	public String toString () {
+		return this.name;
 	}
 
 }

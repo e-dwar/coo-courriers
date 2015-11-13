@@ -14,10 +14,9 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 */
 	public LetterDecorator(Letter<?> letter) {
 		super(letter.getSender(), letter.getReceiver(), letter.getContent());
-		if(!letter.isUrgent()){
+		if (!letter.isUrgent()) {
 			this.letter = letter;
-		}
-		else {
+		} else {
 			throw new MalformedLetterException();
 		}
 	}
@@ -41,5 +40,5 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 * @return the cost
 	 */
 	public abstract double getCost();
-	
+
 }
