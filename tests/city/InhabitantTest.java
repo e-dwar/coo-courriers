@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import letter.Letter;
-import letters.LetterFactory;
+import letter.LetterFactory;
 
 public class InhabitantTest {
 
