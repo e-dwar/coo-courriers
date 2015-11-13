@@ -25,12 +25,7 @@ public class Main {
 		 */
 
 		City disneyLand = new City("Disney Land");
-
-		for (i = 0; i < 100; i++) {
-			String name = "Person #" + (i + 1);
-			BankAccount bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
-			disneyLand.addInhabitant(new Inhabitant(name, bankAccount));
-		}
+		addAHundredInhabitants(disneyLand);
 
 		for (i = 0; i < 10; i++) {
 			System.out.println(disneyLand.getInhabitant(getRandomInt() % disneyLand.size()));
@@ -58,6 +53,17 @@ public class Main {
 		mickey.sendLetter(aRegistered);
 		minnie.sendLetter(aPromisory);
 		disneyLand.distributeLetters();
+	}
+	
+	public static void addAHundredInhabitants(City city){
+		int i;
+		String name;
+		BankAccount bankAccount;
+		for (i = 0; i < 100; i++) {
+			name = "Person #" + (i + 1);
+			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
+			city.addInhabitant(new Inhabitant(name, bankAccount));
+		}		
 	}
 
 	public static void printSent(Letter<?> letter) {
