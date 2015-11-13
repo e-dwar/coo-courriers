@@ -1,8 +1,6 @@
 package city;
 
 import java.util.ArrayList;
-import out.TraceBuffer;
-
 import letter.Letter;
 
 public class City {

@@ -14,7 +14,7 @@ public class Messages {
 	}
 
 	public static String letterReceived(Letter<?> letter) {
-		return "<- " + letter.getSender() + " receives a letter from " + letter.getReceiver();
+		return "<- " + letter.getReceiver() + " receives a letter from " + letter.getSender();
 	}
 
 	public static String senderAccount(Inhabitant sender) {
