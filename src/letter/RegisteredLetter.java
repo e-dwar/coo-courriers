@@ -10,12 +10,14 @@ public class RegisteredLetter extends LetterDecorator {
 	public RegisteredLetter(Letter<?> letter) {
 		super(letter);
 	}
+
 	/*
 	 * Methods
 	 */
-	
+
 	/**
-	 * @return the cost of a simpleLetter plus 15 cents(for the Acknowledgment of receipt)
+	 * @return the cost of a simpleLetter plus 15 cents(for the Acknowledgment
+	 *         of receipt)
 	 */
 	@Override
 	public double getCost() {
@@ -23,16 +25,17 @@ public class RegisteredLetter extends LetterDecorator {
 	}
 
 	/**
-	 * Opens the letter. Next, the receiver send back the Acknowledgment of receipt
+	 * Opens the letter. Next, the receiver send back the Acknowledgment of
+	 * receipt
 	 */
 	@Override
-	public void doAction(){
+	public void doAction() {
 		this.letter.doAction();
 		Text aText = new Text("I've well received your letter.");
 		Letter<?> letter = new AcknowledgmentOfReceipt(this.receiver, this.sender, aText);
 		letter.getSender().sendLetter(letter);
 	}
-	
+
 	/**
 	 * @return the type of the letter
 	 */

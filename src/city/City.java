@@ -37,7 +37,8 @@ public class City {
 	/**
 	 * Sets a new value to the attribute name.
 	 * 
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -67,18 +68,20 @@ public class City {
 	/**
 	 * Returns the inhabitant at the specified position in this list.
 	 * 
-	 * @param index the position in the list
+	 * @param index
+	 *            the position in the list
 	 * @return the inhabitant
 	 */
 	public Inhabitant getInhabitant(int index) {
 		return this.inhabitants.get(index);
 	}
-	
+
 	/**
 	 * Returns the list of the inhabitant of the current city.
+	 * 
 	 * @return inhabitants
 	 */
-	public ArrayList<Inhabitant> getInhabitants(){
+	public ArrayList<Inhabitant> getInhabitants() {
 		return this.inhabitants;
 	}
 

@@ -14,7 +14,8 @@ public class Messages {
 
 	/**
 	 * @param letter
-	 * @return a message when a letter is sent. Display the sender and the receiver.
+	 * @return a message when a letter is sent. Display the sender and the
+	 *         receiver.
 	 */
 	public static String letterSent(Letter<?> letter) {
 		return "-> " + letter.getSender() + " mails a " + letter + " to " + letter.getReceiver();
@@ -22,7 +23,8 @@ public class Messages {
 
 	/**
 	 * @param letter
-	 * @return a message when a letter is received. Display the sender and the receiver.
+	 * @return a message when a letter is received. Display the sender and the
+	 *         receiver.
 	 */
 	public static String letterReceived(Letter<?> letter) {
 		return "<- " + letter.getReceiver() + " receives a " + letter + " from " + letter.getSender();
@@ -64,7 +66,7 @@ public class Messages {
 	public static String dayDbg(int n) {
 		return "\n------\nDAY " + n + "\n------\n";
 	}
-	
+
 	// DEBUG
 	public static String xSentToYWithCostDbg(Letter<?> letter) {
 		String message = "";

@@ -18,11 +18,11 @@ public class RegisteredLetterTest extends LetterTest {
 	}
 
 	@Test
-	public void getCostTest(){
+	public void getCostTest() {
 		Double expectedCost = COST_OF_SIMPLE_LETTER + 0.15;
 		assertEquals(expectedCost, letter.getCost(), 0.01);
 	}
-	
+
 	@Test
 	public void receiverSendsAcknowledgment() {
 		assertEquals(0, receiver.numberOfLetterSent);

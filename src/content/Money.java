@@ -1,27 +1,29 @@
 package content;
+
 public class Money implements Content {
 
 	/*
 	 * Attributes
 	 */
-    private double amount;
+	private double amount;
 
-    /*
+	/*
 	 * Constructor
 	 */
-    public Money (double amount) {
-        this.amount = amount;
-    }
+	public Money(double amount) {
+		this.amount = amount;
+	}
 
-    /*
+	/*
 	 * Methods
 	 */
-    
-    /**
-     * Returns the value of the attribute amount.
-     * @return the amount
-     */
-    public double getAmount () {
-        return this.amount;
-    }
+
+	/**
+	 * Returns the value of the attribute amount.
+	 * 
+	 * @return the amount
+	 */
+	public double getAmount() {
+		return this.amount;
+	}
 }

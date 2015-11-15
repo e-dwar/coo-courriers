@@ -1,3 +1,4 @@
 package content;
 
-public interface Content {}
+public interface Content {
+}

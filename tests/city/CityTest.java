@@ -8,38 +8,38 @@ import letter.Letter;
 import letter.LetterFactory;
 
 public class CityTest {
-	
+
 	private LetterFactory aLetterFactory;
 	private City cityLambda;
 	private String cityName;
-	
+
 	@Before
-	public void init(){
+	public void init() {
 		aLetterFactory = new LetterFactory();
 		cityName = "Lambda";
 		cityLambda = new City(cityName);
 	}
-	
+
 	@Test
 	public void getNameTest() {
 		assertEquals(cityName, cityLambda.getName());
 	}
-	
+
 	@Test
 	public void setNameTest() {
 		assertEquals(cityName, cityLambda.getName());
 		cityLambda.setName("Temp");
 		assertEquals("Temp", cityLambda.getName());
 	}
-	
+
 	@Test
-	public void getPostBoxTest(){
+	public void getPostBoxTest() {
 		assertNotNull(cityLambda.getPostBox());
 		assertEquals(0, cityLambda.getPostBox().size());
 	}
-	
+
 	@Test
-	public void addLetterTest(){
+	public void addLetterTest() {
 		Letter<?> aSimpleLetter = this.aLetterFactory.createSimpleLetter();
 		assertEquals(0, cityLambda.getPostBox().size());
 		assertFalse(cityLambda.getPostBox().contains(aSimpleLetter));
@@ -47,15 +47,15 @@ public class CityTest {
 		assertEquals(1, cityLambda.getPostBox().size());
 		assertTrue(cityLambda.getPostBox().contains(aSimpleLetter));
 	}
-	
+
 	@Test
 	public void distributeLettersTest() {
 		Letter<?> aPromisoryNote = this.aLetterFactory.createPromisoryNote();
 		Letter<?> aRegisteredLetter = this.aLetterFactory.createRLwithSL();
-		
+
 		assertFalse(aPromisoryNote.getOpened());
 		assertFalse(aRegisteredLetter.getOpened());
-		
+
 		assertTrue(cityLambda.getPostBox().isEmpty());
 		cityLambda.addLetter(aPromisoryNote);
 		cityLambda.addLetter(aRegisteredLetter);
@@ -65,9 +65,9 @@ public class CityTest {
 		assertTrue(aPromisoryNote.getOpened());
 		assertTrue(aRegisteredLetter.getOpened());
 	}
-	
+
 	@Test
-	public void addInhabitantTest(){
+	public void addInhabitantTest() {
 		Inhabitant inhabitantLambda = new Inhabitant("inhabitantLambda", new BankAccount(1000.0));
 		assertEquals(0, cityLambda.getInhabitants().size());
 		cityLambda.addInhabitant(inhabitantLambda);
@@ -75,16 +75,16 @@ public class CityTest {
 		cityLambda.addInhabitant(inhabitantLambda);
 		assertEquals(1, cityLambda.getInhabitants().size());
 	}
-	
+
 	@Test
-	public void getInhabitantTest(){
+	public void getInhabitantTest() {
 		Inhabitant inhabitantLambda = new Inhabitant("inhabitantLambda", new BankAccount(1000.0));
 		cityLambda.addInhabitant(inhabitantLambda);
 		assertEquals(inhabitantLambda, cityLambda.getInhabitant(0));
 	}
-	
+
 	@Test
-	public void sizeTest(){
+	public void sizeTest() {
 		Inhabitant inhabitantLambda1 = new Inhabitant("inhabitantLambda1", new BankAccount(1000.0));
 		Inhabitant inhabitantLambda2 = new Inhabitant("inhabitantLambda2", new BankAccount(1000.0));
 		assertEquals(0, cityLambda.size());

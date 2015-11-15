@@ -83,7 +83,7 @@ public abstract class Letter<C extends Content> {
 	/**
 	 * Executes an action on the opening.
 	 */
-	public void doAction(){
+	public void doAction() {
 		this.setOpened(true);
 
 	}
@@ -96,5 +96,5 @@ public abstract class Letter<C extends Content> {
 	public boolean isUrgent() {
 		return false;
 	}
-	
+
 }

@@ -1,7 +1,7 @@
 package city;
 
 public class BankAccount {
-	
+
 	/*
 	 * Attributes
 	 */
@@ -14,13 +14,13 @@ public class BankAccount {
 		this.amount = amount;
 	}
 
-	
 	/*
 	 * Methods
 	 */
 
 	/**
 	 * Returns the value of the attribute amount.
+	 * 
 	 * @return the amount
 	 */
 	public double getAmount() {
@@ -29,17 +29,19 @@ public class BankAccount {
 
 	/**
 	 * Adds money of the account.
+	 * 
 	 * @param money
 	 */
-	public void credit(double money){
-		this.amount += money; 
+	public void credit(double money) {
+		this.amount += money;
 	}
-	
+
 	/**
 	 * Withdraws money from the account.
+	 * 
 	 * @param money
 	 */
-	public void debit(double money){
+	public void debit(double money) {
 		this.amount -= money;
 	}
 }

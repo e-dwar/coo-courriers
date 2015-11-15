@@ -51,7 +51,8 @@ public class Inhabitant {
 	/**
 	 * Sets a new value to the attribute city.
 	 * 
-	 * @param city the city to set
+	 * @param city
+	 *            the city to set
 	 */
 	public void setCity(City city) {
 		this.city = city;
@@ -59,6 +60,7 @@ public class Inhabitant {
 
 	/**
 	 * Returns the value of the attribute bankAccount.
+	 * 
 	 * @return the bankAccount
 	 */
 	public BankAccount getBankAccount() {
@@ -67,6 +69,7 @@ public class Inhabitant {
 
 	/**
 	 * Adds a letter to the postBox contained in the attribute city.
+	 * 
 	 * @param letter
 	 * @return true if the letter is sent otherwise returns flase
 	 */
@@ -97,6 +100,7 @@ public class Inhabitant {
 
 	/**
 	 * Returns the inhabitant's name(used for the Messages and the TraceBuffer)
+	 * 
 	 * @return name
 	 */
 	public String toString() {

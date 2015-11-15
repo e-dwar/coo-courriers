@@ -113,22 +113,22 @@ public class Main {
 		int urgent = getRandomInt() % 2 << 2;
 
 		switch (registered | urgent | promisoryNote) {
-			case 0b001: // promisory note
-				return getRandomPromisoryNote(sender, receiver);
-			case 0b010: // simple letter + registered letter
-				return new RegisteredLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b011: // promisory note + registered letter
-				return new RegisteredLetter(getRandomPromisoryNote(sender, receiver));
-			case 0b100: // simple letter + urgent letter
-				return new UrgentLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b101: // promisory note + urgent letter
-				return new UrgentLetter(getRandomPromisoryNote(sender, receiver));
-			case 0b110: // simple letter + registered letter + urgent letter
-				return new UrgentLetter(new RegisteredLetter(getRandomSimpleLetter(sender, receiver)));
-			case 0b111: // promisory note + registered letter + urgent letter
-				return new UrgentLetter(new RegisteredLetter(getRandomPromisoryNote(sender, receiver)));
-			default: // simple letter
-				return getRandomSimpleLetter(sender, receiver);
+		case 0b001: // promisory note
+			return getRandomPromisoryNote(sender, receiver);
+		case 0b010: // simple letter + registered letter
+			return new RegisteredLetter(getRandomSimpleLetter(sender, receiver));
+		case 0b011: // promisory note + registered letter
+			return new RegisteredLetter(getRandomPromisoryNote(sender, receiver));
+		case 0b100: // simple letter + urgent letter
+			return new UrgentLetter(getRandomSimpleLetter(sender, receiver));
+		case 0b101: // promisory note + urgent letter
+			return new UrgentLetter(getRandomPromisoryNote(sender, receiver));
+		case 0b110: // simple letter + registered letter + urgent letter
+			return new UrgentLetter(new RegisteredLetter(getRandomSimpleLetter(sender, receiver)));
+		case 0b111: // promisory note + registered letter + urgent letter
+			return new UrgentLetter(new RegisteredLetter(getRandomPromisoryNote(sender, receiver)));
+		default: // simple letter
+			return getRandomSimpleLetter(sender, receiver);
 		}
 	}
 

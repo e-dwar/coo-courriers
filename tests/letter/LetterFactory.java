@@ -14,7 +14,7 @@ public class LetterFactory {
 	private InhabitantDouble receiver;
 
 	public LetterFactory() {
-	    City city = new City("Alexandria");
+		City city = new City("Alexandria");
 		sender = new InhabitantDouble("Sender", city);
 		receiver = new InhabitantDouble("Receiver", city);
 	}
@@ -44,14 +44,16 @@ public class LetterFactory {
 	}
 
 	/**
-	 * @return an instance of a RegisteredLetter which is made of a SimpleLetter.
+	 * @return an instance of a RegisteredLetter which is made of a
+	 *         SimpleLetter.
 	 */
 	public RegisteredLetter createRLwithSL() {
 		return new RegisteredLetter(createSimpleLetter());
 	}
 
 	/**
-	 * @return an instance of a RegisteredLetter which is made of a PromisoryNote.
+	 * @return an instance of a RegisteredLetter which is made of a
+	 *         PromisoryNote.
 	 */
 	public RegisteredLetter createRLwithPN() {
 		return new RegisteredLetter(createPromisoryNote());
@@ -72,14 +74,16 @@ public class LetterFactory {
 	}
 
 	/**
-	 * @return an instance of a UrgentLetter which is made of a SimpleLetter and a RegisteredLetter.
+	 * @return an instance of a UrgentLetter which is made of a SimpleLetter and
+	 *         a RegisteredLetter.
 	 */
 	public UrgentLetter createUwithRLwithSL() {
 		return new UrgentLetter(createRLwithSL());
 	}
 
 	/**
-	 * @return an instance of a UrgentLetter which is made of a PromisoryNote and a RegisteredLetter.
+	 * @return an instance of a UrgentLetter which is made of a PromisoryNote
+	 *         and a RegisteredLetter.
 	 */
 	public UrgentLetter createUwithRLwithPN() {
 		return new UrgentLetter(createRLwithPN());

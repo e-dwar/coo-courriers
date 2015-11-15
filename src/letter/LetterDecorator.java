@@ -17,7 +17,7 @@ public abstract class LetterDecorator extends Letter<Content> {
 		if (letter.isUrgent()) {
 			throw new MalformedLetterException();
 		} else {
-		    this.letter = letter;
+			this.letter = letter;
 		}
 	}
 
