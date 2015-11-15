@@ -8,7 +8,7 @@ import letter.*;
 
 public class Main {
 
-	public static Random rdm = new Random(123456789);
+	private static Random rdm = new Random(123456789);
 
 	public static void main(String[] args) {
 		try {
@@ -22,7 +22,7 @@ public class Main {
 	/**
 	 * Deuxième trace.
 	 */
-	public static void run2() {
+	private static void run2() {
 		Letter<?> letter;
 		int i, j;
 		int nInhabitants = 10;
@@ -51,7 +51,7 @@ public class Main {
 	/**
 	 * Première trace.
 	 */
-	public static void run1() {
+	private static void run1() {
 		SimpleLetter aLetter;
 		PromissoryNote aPromissory;
 		RegisteredLetter aRegistered;
@@ -80,7 +80,7 @@ public class Main {
 	 * @param city
 	 * @param n
 	 */
-	public static void addInhabitants(City city, int n) {
+	private static void addInhabitants(City city, int n) {
 		int i;
 		String name;
 		BankAccount bankAccount;
@@ -97,7 +97,7 @@ public class Main {
 	 * @param city The city from which to pick a sender and a receiver.
 	 * @return A random letter.
 	 */
-	public static Letter<?> getRandomLetter(City city) {
+	private static Letter<?> getRandomLetter(City city) {
 		Letter<?> letter;
 		Inhabitant sender = getRandomInhabitant(city);
 		Inhabitant receiver = getRandomInhabitant(city);
@@ -122,7 +122,7 @@ public class Main {
 	 * 
 	 * @return A random inhabitant from the provided city.
 	 */
-	public static Inhabitant getRandomInhabitant(City city) {
+	private static Inhabitant getRandomInhabitant(City city) {
 		return city.getInhabitant(getRandomInt() % city.size());
 	}
 
@@ -131,7 +131,7 @@ public class Main {
 	 * 
 	 * @return An integer between 0 and Integer.MAX_VALUE - 1.
 	 */
-	public static int getRandomInt() {
+	private static int getRandomInt() {
 		return rdm.nextInt(Integer.MAX_VALUE);
 	}
 }
