@@ -10,12 +10,6 @@ public class Main {
 
 	public static Random rdm = new Random(123456789);
 
-	/**
-	 * Nous devons : - Créer une ville - Créer 100 habitants dans cette ville -
-	 * Créer une méthode pour générer aléatoirement des courriers - Créer une
-	 * méthode qui envoie des courriers sur plusieurs jours
-	 */
-
 	public static void main(String[] args) {
 		try {
 			run2();

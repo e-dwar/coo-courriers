@@ -35,6 +35,7 @@ public class CityTest {
 	@Test
 	public void getPostBoxTest(){
 		assertNotNull(cityLambda.getPostBox());
+		assertEquals(0, cityLambda.getPostBox().size());
 	}
 	
 	@Test
@@ -45,8 +46,6 @@ public class CityTest {
 		cityLambda.addLetter(aSimpleLetter);
 		assertEquals(1, cityLambda.getPostBox().size());
 		assertTrue(cityLambda.getPostBox().contains(aSimpleLetter));
-		cityLambda.addLetter(aSimpleLetter);
-		assertEquals(1, cityLambda.getPostBox().size());
 	}
 	
 	@Test
@@ -58,22 +57,41 @@ public class CityTest {
 		assertFalse(aRegisteredLetter.getOpened());
 		
 		assertTrue(cityLambda.getPostBox().isEmpty());
-		cityLambda.distributeLetters();
-		
-		assertFalse(aPromisoryNote.getOpened());
-		assertFalse(aRegisteredLetter.getOpened());
-		
-		
 		cityLambda.addLetter(aPromisoryNote);
 		cityLambda.addLetter(aRegisteredLetter);
-		
 		assertFalse(cityLambda.getPostBox().isEmpty());
-		
-		assertFalse(aPromisoryNote.getOpened());
-		assertFalse(aRegisteredLetter.getOpened());
+
 		cityLambda.distributeLetters();
 		assertTrue(aPromisoryNote.getOpened());
 		assertTrue(aRegisteredLetter.getOpened());
+	}
+	
+	@Test
+	public void addInhabitantTest(){
+		Inhabitant inhabitantLambda = new Inhabitant("inhabitantLambda", new BankAccount(1000.0));
+		assertEquals(0, cityLambda.getInhabitants().size());
+		cityLambda.addInhabitant(inhabitantLambda);
+		assertEquals(1, cityLambda.getInhabitants().size());
+		cityLambda.addInhabitant(inhabitantLambda);
+		assertEquals(1, cityLambda.getInhabitants().size());
+	}
+	
+	@Test
+	public void getInhabitantTest(){
+		Inhabitant inhabitantLambda = new Inhabitant("inhabitantLambda", new BankAccount(1000.0));
+		cityLambda.addInhabitant(inhabitantLambda);
+		assertEquals(inhabitantLambda, cityLambda.getInhabitant(0));
+	}
+	
+	@Test
+	public void sizeTest(){
+		Inhabitant inhabitantLambda1 = new Inhabitant("inhabitantLambda1", new BankAccount(1000.0));
+		Inhabitant inhabitantLambda2 = new Inhabitant("inhabitantLambda2", new BankAccount(1000.0));
+		assertEquals(0, cityLambda.size());
+		cityLambda.addInhabitant(inhabitantLambda1);
+		assertEquals(1, cityLambda.size());
+		cityLambda.addInhabitant(inhabitantLambda2);
+		assertEquals(2, cityLambda.size());
 	}
 
 }

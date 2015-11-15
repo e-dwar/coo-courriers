@@ -51,8 +51,7 @@ public class Inhabitant {
 	/**
 	 * Sets a new value to the attribute city.
 	 * 
-	 * @param city
-	 *            the city to set
+	 * @param city the city to set
 	 */
 	public void setCity(City city) {
 		this.city = city;
@@ -60,7 +59,6 @@ public class Inhabitant {
 
 	/**
 	 * Returns the value of the attribute bankAccount.
-	 * 
 	 * @return the bankAccount
 	 */
 	public BankAccount getBankAccount() {
@@ -69,9 +67,8 @@ public class Inhabitant {
 
 	/**
 	 * Adds a letter to the postBox contained in the attribute city.
-	 * 
 	 * @param letter
-	 * @return TODO
+	 * @return true if the letter is sent otherwise returns flase
 	 */
 	public boolean sendLetter(Letter<?> letter) {
 		boolean isValid = checkLetter(letter);
@@ -98,6 +95,10 @@ public class Inhabitant {
 		letter.doAction();
 	}
 
+	/**
+	 * Returns the inhabitant's name(used for the Messages and the TraceBuffer)
+	 * @return name
+	 */
 	public String toString() {
 		return this.name;
 	}

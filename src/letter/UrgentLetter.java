@@ -13,6 +13,9 @@ public class UrgentLetter extends LetterDecorator {
 	 * Methods
 	 */
 	
+	/**
+	 * @return Doubles the cost of the letter
+	 */
 	@Override
 	public double getCost() {
 		return this.letter.getCost() * 2;
@@ -27,6 +30,9 @@ public class UrgentLetter extends LetterDecorator {
 		this.letter.doAction();
 	}
 	
+	/**
+	 * @return the type of the letter
+	 */
 	public String toString() {
 		return "urgent letter";
 	}

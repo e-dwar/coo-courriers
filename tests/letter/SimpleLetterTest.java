@@ -13,6 +13,11 @@ public class SimpleLetterTest extends LetterTest {
 	public void doActionTest() {
 		super.doActionTest();
 	}
+	
+	@Test
+	public void getCostTest(){
+		assertEquals(COST_OF_SIMPLE_LETTER, letter.getCost(), 0.01);
+	}
 
 	@Test
 	public void textContentTest() {

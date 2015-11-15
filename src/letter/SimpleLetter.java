@@ -25,6 +25,9 @@ public class SimpleLetter extends Letter<Text> {
 		super.doAction();	
 	}
 	
+	/**
+	 * @return the type of the letter
+	 */
 	public String toString() {
 		return "simple letter";
 	}

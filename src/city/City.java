@@ -9,7 +9,6 @@ public class City {
 	 * Attributes
 	 */
 	protected String name;
-	protected ArrayList<Letter<?>> round;
 	protected ArrayList<Letter<?>> postBox;
 	protected ArrayList<Inhabitant> inhabitants;
 
@@ -38,8 +37,7 @@ public class City {
 	/**
 	 * Sets a new value to the attribute name.
 	 * 
-	 * @param name
-	 *            the name to set
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -69,12 +67,19 @@ public class City {
 	/**
 	 * Returns the inhabitant at the specified position in this list.
 	 * 
-	 * @param i
-	 *            the position in the list
+	 * @param index the position in the list
 	 * @return the inhabitant
 	 */
-	public Inhabitant getInhabitant(int i) {
-		return this.inhabitants.get(i);
+	public Inhabitant getInhabitant(int index) {
+		return this.inhabitants.get(index);
+	}
+	
+	/**
+	 * Returns the list of the inhabitant of the current city.
+	 * @return inhabitants
+	 */
+	public ArrayList<Inhabitant> getInhabitants(){
+		return this.inhabitants;
 	}
 
 	/**
@@ -99,7 +104,7 @@ public class City {
 	 * Distributes all the letters contained in the postBox.
 	 */
 	public void distributeLetters() {
-		round = postBox;
+		ArrayList<Letter<?>> round = postBox;
 		postBox = new ArrayList<Letter<?>>();
 		for (Letter<?> letter : round) {
 			letter.getReceiver().receiveLetter(letter);

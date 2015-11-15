@@ -13,6 +13,8 @@ public abstract class LetterTest {
 	protected InhabitantDouble receiver;
 	protected LetterFactory letterFactory = new LetterFactory();
 	protected final double COST_OF_SIMPLE_LETTER = 1;
+	
+	
 	public abstract Letter<?> createLetter();
 
 	@Before
