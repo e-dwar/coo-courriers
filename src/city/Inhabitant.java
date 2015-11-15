@@ -51,8 +51,7 @@ public class Inhabitant {
 	/**
 	 * Sets a new value to the attribute city.
 	 * 
-	 * @param city
-	 *            the city to set
+	 * @param city the city to set
 	 */
 	public void setCity(City city) {
 		this.city = city;

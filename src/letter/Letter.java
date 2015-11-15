@@ -66,8 +66,7 @@ public abstract class Letter<C extends Content> {
 	/**
 	 * Sets a new value to the attribute opened.
 	 * 
-	 * @param opened
-	 *            the opened to set
+	 * @param opened the opened to set
 	 */
 	public void setOpened(Boolean opened) {
 		this.opened = opened;

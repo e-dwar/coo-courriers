@@ -7,7 +7,7 @@ public class TraceBuffer {
 	protected static ArrayList<String> buffer = new ArrayList<String>();
 
 	/**
-	 * Adds a message to the buffer
+	 * Adds a message to the buffer.
 	 * 
 	 * @param line
 	 */
@@ -16,7 +16,7 @@ public class TraceBuffer {
 	}
 
 	/**
-	 * Adds a formatted exception to the buffer
+	 * Adds a formatted exception to the buffer.
 	 * 
 	 * @param e
 	 */
@@ -25,7 +25,7 @@ public class TraceBuffer {
 	}
 
 	/**
-	 * Adds a carraige return to the buffer
+	 * Adds a carriage return to the buffer.
 	 */
 	public static void cr() {
 		add("");
