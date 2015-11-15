@@ -2,45 +2,56 @@ package out;
 
 import static org.junit.Assert.*;
 
+import java.io.PrintStream;
+
 import org.junit.*;
 
-public class TraceBufferTest {
-	
-	@Before
-	public void init(){
-		TraceBuffer.getBuffer().clear();
-	}
-	
-	@Test
-	public void addTest() {
-		assertEquals(0, TraceBuffer.getBuffer().size());
-		TraceBuffer.add("temp");
-		assertEquals(1, TraceBuffer.getBuffer().size());
-	}
-	
-	@Test
-	public void errorTest(){
-		assertEquals(0, TraceBuffer.getBuffer().size());
-		TraceBuffer.error(new Exception("temp"));
-		assertEquals(1, TraceBuffer.getBuffer().size());
-	}
-	
-	
-	
-	@Test
-	public void flushTest() {
-		assertEquals(0, TraceBuffer.getBuffer().size());
-		TraceBuffer.add("temp1");
-		TraceBuffer.add("temp2");
-		assertEquals(2, TraceBuffer.getBuffer().size());
-		TraceBuffer.flush();
-		assertEquals(0, TraceBuffer.getBuffer().size());
-	}
+import testdouble.TraceBufferDouble;
 
-	@Test
-	public void crTest() {
-		assertEquals(0, TraceBuffer.getBuffer().size());
-		TraceBuffer.cr();
-		assertEquals(1, TraceBuffer.getBuffer().size());
-	}
+public class TraceBufferTest {
+
+    private PrintStream original;
+
+    @Before
+    public void before() {
+        original = System.out;
+        System.setOut(new PrintStream(new NullByteArrayOutputStream()));
+        TraceBufferDouble.getBuffer().clear();
+    }
+
+    @After
+    public void after() {
+        System.setOut(original);
+    }
+
+    @Test
+    public void addTest() {
+        assertEquals(0, TraceBufferDouble.getBuffer().size());
+        TraceBufferDouble.add("temp");
+        assertEquals(1, TraceBufferDouble.getBuffer().size());
+    }
+
+    @Test
+    public void errorTest() {
+        assertEquals(0, TraceBufferDouble.getBuffer().size());
+        TraceBufferDouble.error(new Exception("temp"));
+        assertEquals(1, TraceBufferDouble.getBuffer().size());
+    }
+
+    @Test
+    public void flushTest() {
+        assertEquals(0, TraceBufferDouble.getBuffer().size());
+        TraceBufferDouble.add("temp1");
+        TraceBufferDouble.add("temp2");
+        assertEquals(2, TraceBufferDouble.getBuffer().size());
+        TraceBufferDouble.flush();
+        assertEquals(0, TraceBufferDouble.getBuffer().size());
+    }
+
+    @Test
+    public void crTest() {
+        assertEquals(0, TraceBufferDouble.getBuffer().size());
+        TraceBufferDouble.cr();
+        assertEquals(1, TraceBufferDouble.getBuffer().size());
+    }
 }

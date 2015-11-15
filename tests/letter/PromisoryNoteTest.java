@@ -14,19 +14,20 @@ public class PromisoryNoteTest extends LetterTest {
 
 	@Test
 	public void doActionTest() {
+	    Double amount = ((PromisoryNote) letter).getAmount();
 		City city = letter.getSender().getCity();
-		Money money = (Money) letter.getContent();
 		BankAccount senderBankAccount = letter.getSender().getBankAccount();
 		BankAccount receiverBankAccount = letter.getReceiver().getBankAccount();
 		Double previousSenderAmount = senderBankAccount.getAmount();
 		Double previousReceiverAmount = receiverBankAccount.getAmount();
 		
-		//The sender has already paid the letter's cost. so we're just expecting that the money has been well debited
-		Double expectedSenderAmount = previousSenderAmount -  money.getAmount();
+		// The sender has already paid the letter's cost,
+		// so we're just expecting that the money has been well debited
+		Double expectedSenderAmount = previousSenderAmount - amount;
 		
-		//The receiver shall receive an amount of money, and he has to send back a letter
-		Double expectedReceiverAmount = previousReceiverAmount + money.getAmount() - COST_OF_SIMPLE_LETTER;
-		
+		// The receiver shall receive an amount of money,
+		// and he has to send back a letter
+		Double expectedReceiverAmount = previousReceiverAmount + amount - COST_OF_SIMPLE_LETTER;
 		
 		// tests
 		assertEquals(0, city.getPostBox().size());

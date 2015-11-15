@@ -9,8 +9,8 @@ public class InhabitantDouble extends Inhabitant {
 
 	public int numberOfLetterSent;
 
-	public InhabitantDouble(String name) {
-		super(name, new City("city of " + name), new BankAccount(1000));
+	public InhabitantDouble(String name, City city) {
+		super(name, city, new BankAccount(1000));
 		numberOfLetterSent = 0;
 	}
 

@@ -1,5 +1,6 @@
 package letter;
 
+import city.City;
 import testdouble.InhabitantDouble;
 import letter.PromisoryNote;
 import letter.RegisteredLetter;
@@ -13,8 +14,9 @@ public class LetterFactory {
 	private InhabitantDouble receiver;
 
 	public LetterFactory() {
-		sender = new InhabitantDouble("Sender");
-		receiver = new InhabitantDouble("Receiver");
+	    City city = new City("Alexandria");
+		sender = new InhabitantDouble("Sender", city);
+		receiver = new InhabitantDouble("Receiver", city);
 	}
 
 	/**

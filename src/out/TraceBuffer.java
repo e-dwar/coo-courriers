@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class TraceBuffer {
 	
-	private static ArrayList<String> buffer = new ArrayList<String>();
+	protected static ArrayList<String> buffer = new ArrayList<String>();
 	
 	/**
 	 * Adds a message to the buffer
@@ -35,12 +35,5 @@ public class TraceBuffer {
 		while (buffer.size() > 0) {
 			System.out.println(buffer.remove(0));
 		}
-	}
-	
-	/**
-	 * @return the buffer
-	 */
-	public static ArrayList<String> getBuffer(){
-		return buffer;
 	}
 }
