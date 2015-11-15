@@ -3,12 +3,12 @@ package letter;
 import city.Inhabitant;
 import content.*;
 
-public class PromisoryNote extends Letter<Money> {
+public class PromissoryNote extends Letter<Money> {
 
 	/*
 	 * Constructor
 	 */
-	public PromisoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
+	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
 		super(sender, receiver, content);
 	}
 
@@ -45,7 +45,7 @@ public class PromisoryNote extends Letter<Money> {
 	 * @return the type of the letter with his content
 	 */
 	public String toString() {
-		return "promisory note (" + this.getAmount() + ")";
+		return "promissory note (" + this.getAmount() + ")";
 	}
 
 	/**

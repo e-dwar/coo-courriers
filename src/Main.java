@@ -53,16 +53,16 @@ public class Main {
 	 */
 	public static void run1() {
 		SimpleLetter aLetter;
-		PromisoryNote aPromisory;
+		PromissoryNote aPromissory;
 		RegisteredLetter aRegistered;
 		City disneyLand = new City("Disney Land");
 		Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand, new BankAccount(5000.0));
 		Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand, new BankAccount(5000.0));
 		aLetter = new SimpleLetter(mickey, minnie, new Text("I need money !"));
 		aRegistered = new RegisteredLetter(aLetter);
-		aPromisory = new PromisoryNote(minnie, mickey, new Money(150));
+		aPromissory = new PromissoryNote(minnie, mickey, new Money(150));
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aLetter));
-		TraceBuffer.add(Messages.xSentToYWithCostDbg(aPromisory));
+		TraceBuffer.add(Messages.xSentToYWithCostDbg(aPromissory));
 		TraceBuffer.add("Prix d'une registered = " + aRegistered.getCost() + "$");
 		Letter<Content> aUrgent1 = new UrgentLetter(new RegisteredLetter(aLetter));
 		Letter<Content> aUrgent2 = new RegisteredLetter(new UrgentLetter(aLetter));
@@ -70,7 +70,7 @@ public class Main {
 		TraceBuffer.cr();
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent2));
 		mickey.sendLetter(aRegistered);
-		minnie.sendLetter(aPromisory);
+		minnie.sendLetter(aPromissory);
 		disneyLand.distributeLetters();
 	}
 
@@ -101,31 +101,31 @@ public class Main {
 	public static Letter<?> getRandomLetter(City city) throws Exception {
 
 		// 000 simple letter
-		// 001 promisory note
+		// 001 promissory note
 		// 010 registered letter
 		// 100 urgent letter
 
 		Inhabitant sender = getRandomInhabitant(city);
 		Inhabitant receiver = getRandomInhabitant(city);
-		int promisoryNote = getRandomInt() % 2;
+		int promissoryNote = getRandomInt() % 2;
 		int registered = getRandomInt() % 2 << 1;
 		int urgent = getRandomInt() % 2 << 2;
 
-		switch (registered | urgent | promisoryNote) {
-			case 0b001: // promisory note
-				return getRandomPromisoryNote(sender, receiver);
+		switch (registered | urgent | promissoryNote) {
+			case 0b001: // promissory note
+				return getRandomPromissoryNote(sender, receiver);
 			case 0b010: // simple letter + registered letter
 				return new RegisteredLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b011: // promisory note + registered letter
-				return new RegisteredLetter(getRandomPromisoryNote(sender, receiver));
+			case 0b011: // promissory note + registered letter
+				return new RegisteredLetter(getRandomPromissoryNote(sender, receiver));
 			case 0b100: // simple letter + urgent letter
 				return new UrgentLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b101: // promisory note + urgent letter
-				return new UrgentLetter(getRandomPromisoryNote(sender, receiver));
+			case 0b101: // promissory note + urgent letter
+				return new UrgentLetter(getRandomPromissoryNote(sender, receiver));
 			case 0b110: // simple letter + registered letter + urgent letter
 				return new UrgentLetter(new RegisteredLetter(getRandomSimpleLetter(sender, receiver)));
-			case 0b111: // promisory note + registered letter + urgent letter
-				return new UrgentLetter(new RegisteredLetter(getRandomPromisoryNote(sender, receiver)));
+			case 0b111: // promissory note + registered letter + urgent letter
+				return new UrgentLetter(new RegisteredLetter(getRandomPromissoryNote(sender, receiver)));
 			default: // simple letter
 				return getRandomSimpleLetter(sender, receiver);
 		}
@@ -144,15 +144,15 @@ public class Main {
 	}
 
 	/**
-	 * Gives a promisory note with a random amount of money.
+	 * Gives a promissory note with a random amount of money.
 	 * 
 	 * @param sender
 	 * @param receiver
-	 * @return A promisory note with a random amount of money.
+	 * @return A promissory note with a random amount of money.
 	 */
-	public static Letter<?> getRandomPromisoryNote(Inhabitant sender, Inhabitant receiver) {
+	public static Letter<?> getRandomPromissoryNote(Inhabitant sender, Inhabitant receiver) {
 		Money content = new Money(10 * (getRandomInt() % 5 + 1));
-		return new PromisoryNote(sender, receiver, content);
+		return new PromissoryNote(sender, receiver, content);
 	}
 
 	/**

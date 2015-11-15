@@ -50,19 +50,19 @@ public class CityTest {
 
 	@Test
 	public void distributeLettersTest() {
-		Letter<?> aPromisoryNote = this.aLetterFactory.createPromisoryNote();
+		Letter<?> aPromissoryNote = this.aLetterFactory.createPromissoryNote();
 		Letter<?> aRegisteredLetter = this.aLetterFactory.createRLwithSL();
 
-		assertFalse(aPromisoryNote.getOpened());
+		assertFalse(aPromissoryNote.getOpened());
 		assertFalse(aRegisteredLetter.getOpened());
 
 		assertTrue(cityLambda.getPostBox().isEmpty());
-		cityLambda.addLetter(aPromisoryNote);
+		cityLambda.addLetter(aPromissoryNote);
 		cityLambda.addLetter(aRegisteredLetter);
 		assertFalse(cityLambda.getPostBox().isEmpty());
 
 		cityLambda.distributeLetters();
-		assertTrue(aPromisoryNote.getOpened());
+		assertTrue(aPromissoryNote.getOpened());
 		assertTrue(aRegisteredLetter.getOpened());
 	}
 

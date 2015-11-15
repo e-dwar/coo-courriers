@@ -10,11 +10,11 @@ import city.City;
 
 import content.Money;
 
-public class PromisoryNoteTest extends LetterTest {
+public class PromissoryNoteTest extends LetterTest {
 
 	@Test
 	public void doActionTest() {
-		Double amount = ((PromisoryNote) letter).getAmount();
+		Double amount = ((PromissoryNote) letter).getAmount();
 		City city = letter.getSender().getCity();
 		BankAccount senderBankAccount = letter.getSender().getBankAccount();
 		BankAccount receiverBankAccount = letter.getReceiver().getBankAccount();
@@ -47,7 +47,7 @@ public class PromisoryNoteTest extends LetterTest {
 
 	@Override
 	public Letter<?> createLetter() {
-		return letterFactory.createPromisoryNote();
+		return letterFactory.createPromissoryNote();
 	}
 
 }

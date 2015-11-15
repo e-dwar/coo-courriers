@@ -51,9 +51,9 @@ public class InhabitantTest {
 	@Test
 	public void checkLetterTest() {
 		Letter<?> aSimple = this.aLetterFactory.createSimpleLetter();
-		Letter<?> aPromisory = this.aLetterFactory.createPromisoryNote(1000000.0);
+		Letter<?> aPromissory = this.aLetterFactory.createPromissoryNote(1000000.0);
 		assertTrue(aInhabitant.checkLetter(aSimple));
-		assertFalse(aInhabitant.checkLetter(aPromisory));
+		assertFalse(aInhabitant.checkLetter(aPromissory));
 	}
 
 	@Test

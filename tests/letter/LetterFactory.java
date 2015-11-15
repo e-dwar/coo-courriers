@@ -2,7 +2,7 @@ package letter;
 
 import city.City;
 import testdouble.InhabitantDouble;
-import letter.PromisoryNote;
+import letter.PromissoryNote;
 import letter.RegisteredLetter;
 import letter.SimpleLetter;
 import letter.UrgentLetter;
@@ -28,19 +28,19 @@ public class LetterFactory {
 	}
 
 	/**
-	 * @return an instance of a PromisoryNote with a defined amount.
+	 * @return an instance of a PromissoryNote with a defined amount.
 	 */
-	public PromisoryNote createPromisoryNote() {
+	public PromissoryNote createPromissoryNote() {
 		Money aMoney = new Money(200.0);
-		return new PromisoryNote(sender, receiver, aMoney);
+		return new PromissoryNote(sender, receiver, aMoney);
 	}
 
 	/**
-	 * @return an instance of a PromisoryNote without a defined amount.
+	 * @return an instance of a PromissoryNote without a defined amount.
 	 */
-	public PromisoryNote createPromisoryNote(double money) {
+	public PromissoryNote createPromissoryNote(double money) {
 		Money aMoney = new Money(money);
-		return new PromisoryNote(sender, receiver, aMoney);
+		return new PromissoryNote(sender, receiver, aMoney);
 	}
 
 	/**
@@ -53,10 +53,10 @@ public class LetterFactory {
 
 	/**
 	 * @return an instance of a RegisteredLetter which is made of a
-	 *         PromisoryNote.
+	 *         PromissoryNote.
 	 */
 	public RegisteredLetter createRLwithPN() {
-		return new RegisteredLetter(createPromisoryNote());
+		return new RegisteredLetter(createPromissoryNote());
 	}
 
 	/**
@@ -67,10 +67,10 @@ public class LetterFactory {
 	}
 
 	/**
-	 * @return an instance of a UrgentLetter which is made of a PromisoryNote.
+	 * @return an instance of a UrgentLetter which is made of a PromissoryNote.
 	 */
 	public UrgentLetter createUwithPN() {
-		return new UrgentLetter(createPromisoryNote());
+		return new UrgentLetter(createPromissoryNote());
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class LetterFactory {
 	}
 
 	/**
-	 * @return an instance of a UrgentLetter which is made of a PromisoryNote
+	 * @return an instance of a UrgentLetter which is made of a PromissoryNote
 	 *         and a RegisteredLetter.
 	 */
 	public UrgentLetter createUwithRLwithPN() {
