@@ -96,63 +96,25 @@ public class Main {
 	 * 
 	 * @param city The city from which to pick a sender and a receiver.
 	 * @return A random letter.
-	 * @throws Exception
 	 */
-	public static Letter<?> getRandomLetter(City city) throws Exception {
-
-		// 000 simple letter
-		// 001 promissory note
-		// 010 registered letter
-		// 100 urgent letter
-
+	public static Letter<?> getRandomLetter(City city) {
+		Letter<?> letter;
 		Inhabitant sender = getRandomInhabitant(city);
 		Inhabitant receiver = getRandomInhabitant(city);
-		int promissoryNote = getRandomInt() % 2;
-		int registered = getRandomInt() % 2 << 1;
-		int urgent = getRandomInt() % 2 << 2;
-
-		switch (registered | urgent | promissoryNote) {
-			case 0b001: // promissory note
-				return getRandomPromissoryNote(sender, receiver);
-			case 0b010: // simple letter + registered letter
-				return new RegisteredLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b011: // promissory note + registered letter
-				return new RegisteredLetter(getRandomPromissoryNote(sender, receiver));
-			case 0b100: // simple letter + urgent letter
-				return new UrgentLetter(getRandomSimpleLetter(sender, receiver));
-			case 0b101: // promissory note + urgent letter
-				return new UrgentLetter(getRandomPromissoryNote(sender, receiver));
-			case 0b110: // simple letter + registered letter + urgent letter
-				return new UrgentLetter(new RegisteredLetter(getRandomSimpleLetter(sender, receiver)));
-			case 0b111: // promissory note + registered letter + urgent letter
-				return new UrgentLetter(new RegisteredLetter(getRandomPromissoryNote(sender, receiver)));
-			default: // simple letter
-				return getRandomSimpleLetter(sender, receiver);
+		if ((getRandomInt() % 2) == 1) {
+			Money content = new Money(10 * (getRandomInt() % 5 + 1));
+			letter = new PromissoryNote(sender, receiver, content);
+		} else {
+			Text content = new Text("Hello " + receiver + "!\n\n - " + sender);
+			letter = new SimpleLetter(sender, receiver, content);
 		}
-	}
-
-	/**
-	 * Gives a simple letter with a random text content.
-	 * 
-	 * @param sender
-	 * @param receiver
-	 * @return A simple letter with a random text content.
-	 */
-	public static Letter<?> getRandomSimpleLetter(Inhabitant sender, Inhabitant receiver) {
-		Text content = new Text("Hello " + receiver + "!\n\n - " + sender);
-		return new SimpleLetter(sender, receiver, content);
-	}
-
-	/**
-	 * Gives a promissory note with a random amount of money.
-	 * 
-	 * @param sender
-	 * @param receiver
-	 * @return A promissory note with a random amount of money.
-	 */
-	public static Letter<?> getRandomPromissoryNote(Inhabitant sender, Inhabitant receiver) {
-		Money content = new Money(10 * (getRandomInt() % 5 + 1));
-		return new PromissoryNote(sender, receiver, content);
+		if ((getRandomInt() % 2) == 1) {
+			letter = new RegisteredLetter(letter);
+		}
+		if ((getRandomInt() % 2) == 1) {
+			letter = new UrgentLetter(letter);
+		}
+		return letter;
 	}
 
 	/**
