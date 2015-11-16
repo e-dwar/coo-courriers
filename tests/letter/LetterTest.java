@@ -12,7 +12,6 @@ public abstract class LetterTest {
 	protected Letter<?> letter;
 	protected InhabitantDouble receiver;
 	protected LetterFactory letterFactory = new LetterFactory();
-	protected final double COST_OF_SIMPLE_LETTER = 1;
 
 	public abstract Letter<?> createLetter();
 
@@ -20,6 +19,11 @@ public abstract class LetterTest {
 	public void init() {
 		letter = createLetter();
 		receiver = (InhabitantDouble) letter.getReceiver();
+	}
+
+	@Test
+	public void isUrgentTest() {
+		assertFalse(letter.isUrgent());
 	}
 
 	@Test

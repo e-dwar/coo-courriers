@@ -5,6 +5,8 @@ import content.Text;
 
 public class SimpleLetter extends Letter<Text> {
 
+	public final static double COST = 1;
+	
 	/*
 	 * Constructor
 	 */
@@ -18,7 +20,7 @@ public class SimpleLetter extends Letter<Text> {
 
 	@Override
 	public double getCost() {
-		return 1;
+		return SimpleLetter.COST;
 	}
 
 	@Override

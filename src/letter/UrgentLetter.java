@@ -7,6 +7,9 @@ public class UrgentLetter extends LetterDecorator {
 	 */
 	public UrgentLetter(Letter<?> letter) {
 		super(letter);
+		if (letter.isUrgent()) {
+			throw new MalformedLetterException();
+		}
 	}
 
 	/*
@@ -34,6 +37,6 @@ public class UrgentLetter extends LetterDecorator {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return "urgent letter";
+		return this.letter + " urgent letter";
 	}
 }

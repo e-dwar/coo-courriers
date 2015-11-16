@@ -12,13 +12,9 @@ public abstract class LetterDecorator extends Letter<Content> {
 	/*
 	 * Constructor
 	 */
-	public LetterDecorator(Letter<?> letter) {
-		super(letter.getSender(), letter.getReceiver(), letter.getContent());
-		if (letter.isUrgent()) {
-			throw new MalformedLetterException();
-		} else {
-			this.letter = letter;
-		}
+	public LetterDecorator(Letter<?> aLetter) {
+		super(aLetter.getSender(), aLetter.getReceiver(), aLetter.getContent());
+		letter = aLetter;
 	}
 
 	/*
@@ -32,6 +28,11 @@ public abstract class LetterDecorator extends Letter<Content> {
 	 */
 	public Boolean getOpened() {
 		return this.letter.getOpened();
+	}
+
+	@Override
+	public boolean isUrgent() {
+		return this.letter.isUrgent() || false;
 	}
 
 }

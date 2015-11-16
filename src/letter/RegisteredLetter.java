@@ -40,7 +40,7 @@ public class RegisteredLetter extends LetterDecorator {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return "registered letter";
+		return this.letter + " registered letter";
 	}
 
 }
