@@ -3,9 +3,9 @@ package testdouble;
 import letter.Letter;
 import letter.LetterDecorator;
 
-public class LetterDecoratorDouble extends LetterDecorator {
+public class LetterDecoratorDouble<L extends Letter<?>> extends LetterDecorator<L> {
 
-	public LetterDecoratorDouble(Letter<?> letter) {
+	public LetterDecoratorDouble(L letter) {
 		super(letter);
 	}
 

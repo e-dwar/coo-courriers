@@ -1,11 +1,11 @@
 package letter;
 
-public class UrgentLetter extends LetterDecorator {
+public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
 	/*
 	 * Constructor
 	 */
-	public UrgentLetter(Letter<?> letter) {
+	public UrgentLetter(L letter) {
 		super(letter);
 		if (letter.isUrgent()) {
 			throw new MalformedLetterException();
@@ -21,7 +21,7 @@ public class UrgentLetter extends LetterDecorator {
 	 */
 	@Override
 	public double getCost() {
-		return this.letter.getCost() * 2;
+		return this.content.getCost() * 2;
 	}
 
 	@Override
@@ -30,13 +30,13 @@ public class UrgentLetter extends LetterDecorator {
 	}
 
 	public void doAction() {
-		this.letter.doAction();
+		this.content.doAction();
 	}
 
 	/**
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return this.letter + " urgent letter";
+		return this.content + " urgent letter";
 	}
 }

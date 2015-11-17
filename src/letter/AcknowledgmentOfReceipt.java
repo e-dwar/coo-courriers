@@ -14,4 +14,11 @@ public class AcknowledgmentOfReceipt extends SimpleLetter {
 		return 0;
 	}
 
+	/**
+	 * @return the type of the letter
+	 */
+	public String toString() {
+		return "acknowledgment of receipt";
+	}
+
 }

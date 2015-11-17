@@ -47,46 +47,46 @@ public class LetterFactory {
 	 * @return an instance of a RegisteredLetter which is made of a
 	 *         SimpleLetter.
 	 */
-	public RegisteredLetter createRLwithSL() {
-		return new RegisteredLetter(createSimpleLetter());
+	public RegisteredLetter<SimpleLetter> createRLwithSL() {
+		return new RegisteredLetter<SimpleLetter>(createSimpleLetter());
 	}
 
 	/**
 	 * @return an instance of a RegisteredLetter which is made of a
 	 *         PromissoryNote.
 	 */
-	public RegisteredLetter createRLwithPN() {
-		return new RegisteredLetter(createPromissoryNote());
+	public RegisteredLetter<PromissoryNote> createRLwithPN() {
+		return new RegisteredLetter<PromissoryNote>(createPromissoryNote());
 	}
 
 	/**
 	 * @return an instance of a UrgentLetter which is made of a SimpleLetter.
 	 */
-	public UrgentLetter createUwithSL() {
-		return new UrgentLetter(createSimpleLetter());
+	public UrgentLetter<SimpleLetter> createUwithSL() {
+		return new UrgentLetter<SimpleLetter>(createSimpleLetter());
 	}
 
 	/**
 	 * @return an instance of a UrgentLetter which is made of a PromissoryNote.
 	 */
-	public UrgentLetter createUwithPN() {
-		return new UrgentLetter(createPromissoryNote());
+	public UrgentLetter<PromissoryNote> createUwithPN() {
+		return new UrgentLetter<PromissoryNote>(createPromissoryNote());
 	}
 
 	/**
 	 * @return an instance of a UrgentLetter which is made of a SimpleLetter and
 	 *         a RegisteredLetter.
 	 */
-	public UrgentLetter createUwithRLwithSL() {
-		return new UrgentLetter(createRLwithSL());
+	public UrgentLetter<RegisteredLetter<?>> createUwithRLwithSL() {
+		return new UrgentLetter<RegisteredLetter<?>>(createRLwithSL());
 	}
 
 	/**
 	 * @return an instance of a UrgentLetter which is made of a PromissoryNote
 	 *         and a RegisteredLetter.
 	 */
-	public UrgentLetter createUwithRLwithPN() {
-		return new UrgentLetter(createRLwithPN());
+	public UrgentLetter<RegisteredLetter<?>> createUwithRLwithPN() {
+		return new UrgentLetter<RegisteredLetter<?>>(createRLwithPN());
 	}
 
 }

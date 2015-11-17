@@ -2,12 +2,12 @@ package letter;
 
 import content.Text;
 
-public class RegisteredLetter extends LetterDecorator {
+public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
 	/*
 	 * Constructor
 	 */
-	public RegisteredLetter(Letter<?> letter) {
+	public RegisteredLetter(L letter) {
 		super(letter);
 	}
 
@@ -21,7 +21,7 @@ public class RegisteredLetter extends LetterDecorator {
 	 */
 	@Override
 	public double getCost() {
-		return this.letter.getCost() + 0.15;
+		return this.content.getCost() + 0.15;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class RegisteredLetter extends LetterDecorator {
 	 */
 	@Override
 	public void doAction() {
-		this.letter.doAction();
+		this.content.doAction();
 		Text aText = new Text("I've well received your letter.");
 		Letter<?> letter = new AcknowledgmentOfReceipt(this.receiver, this.sender, aText);
 		letter.getSender().sendLetter(letter);
@@ -40,7 +40,7 @@ public class RegisteredLetter extends LetterDecorator {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return this.letter + " registered letter";
+		return this.content + " registered letter";
 	}
 
 }

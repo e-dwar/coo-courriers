@@ -3,7 +3,7 @@ package letter;
 import city.Inhabitant;
 import content.Content;
 
-public abstract class Letter<C extends Content> {
+public abstract class Letter<C extends Content> implements Content {
 
 	/*
 	 * Attributes
