@@ -15,7 +15,7 @@ public class MoneyTest {
 
 	@Test
 	public void getAmountTest() {
-		assertEquals(100.0, aMoneyContent.getAmount(), 0.01);
+		assertEquals(100.0, aMoneyContent.getAmount(), 0);
 	}
 
 }

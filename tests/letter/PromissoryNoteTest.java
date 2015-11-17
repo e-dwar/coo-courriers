@@ -32,8 +32,8 @@ public class PromissoryNoteTest extends LetterTest {
 		// tests
 		assertEquals(0, city.getPostBox().size());
 		super.doActionTest();
-		assertEquals(expectedSenderAmount, senderBankAccount.getAmount(), 0.01);
-		assertEquals(expectedReceiverAmount, receiverBankAccount.getAmount(), 0.01);
+		assertEquals(expectedSenderAmount, senderBankAccount.getAmount(), 0);
+		assertEquals(expectedReceiverAmount, receiverBankAccount.getAmount(), 0);
 		assertEquals(1, city.getPostBox().size());
 	}
 
@@ -42,7 +42,7 @@ public class PromissoryNoteTest extends LetterTest {
 		Double expectedCost = SimpleLetter.COST;
 		Money money = (Money) letter.getContent();
 		expectedCost += (money.getAmount() * 0.01);
-		assertEquals(expectedCost, letter.getCost(), 0.01);
+		assertEquals(expectedCost, letter.getCost(), 0);
 	}
 
 	@Override

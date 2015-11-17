@@ -14,21 +14,21 @@ public class BankAccountTest {
 
 	@Test
 	public void getAmountTest() {
-		assertEquals(1000.0, bankAccount.getAmount(), 0.01);
+		assertEquals(1000.0, bankAccount.getAmount(), 0);
 	}
 
 	@Test
 	public void creditTest() {
-		assertEquals(1000.0, bankAccount.getAmount(), 0.01);
+		assertEquals(1000.0, bankAccount.getAmount(), 0);
 		bankAccount.credit(100.0);
-		assertEquals(1100.0, bankAccount.getAmount(), 0.01);
+		assertEquals(1100.0, bankAccount.getAmount(), 0);
 	}
 
 	@Test
 	public void debitTest() {
-		assertEquals(1000.0, bankAccount.getAmount(), 0.01);
+		assertEquals(1000.0, bankAccount.getAmount(), 0);
 		bankAccount.debit(100.0);
-		assertEquals(900.0, bankAccount.getAmount(), 0.01);
+		assertEquals(900.0, bankAccount.getAmount(), 0);
 	}
 
 }

@@ -16,7 +16,7 @@ public class SimpleLetterTest extends LetterTest {
 
 	@Test
 	public void getCostTest() {
-		assertEquals(SimpleLetter.COST, letter.getCost(), 0.01);
+		assertEquals(SimpleLetter.COST, letter.getCost(), 0);
 	}
 
 	@Test

@@ -4,6 +4,8 @@ import content.Text;
 
 public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
+	public final static double COST_AOR = 0.15;
+	
 	/*
 	 * Constructor
 	 */
@@ -21,7 +23,7 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	@Override
 	public double getCost() {
-		return this.content.getCost() + 0.15;
+		return this.content.getCost() + COST_AOR;
 	}
 
 	/**

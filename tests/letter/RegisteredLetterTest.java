@@ -19,8 +19,8 @@ public class RegisteredLetterTest extends LetterTest {
 
 	@Test
 	public void getCostTest() {
-		Double expectedCost = SimpleLetter.COST + 0.15;
-		assertEquals(expectedCost, letter.getCost(), 0.01);
+		Double expectedCost = SimpleLetter.COST + RegisteredLetter.COST_AOR;
+		assertEquals(expectedCost, letter.getCost(), 0);
 	}
 
 	@Test
