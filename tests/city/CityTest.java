@@ -4,20 +4,22 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import testdouble.CityDouble;
+
 import letter.Letter;
 import letter.LetterFactory;
 
 public class CityTest {
 
 	private LetterFactory aLetterFactory;
-	private City cityLambda;
+	private CityDouble cityLambda;
 	private String cityName;
 
 	@Before
 	public void init() {
 		aLetterFactory = new LetterFactory();
 		cityName = "Lambda";
-		cityLambda = new City(cityName);
+		cityLambda = new CityDouble(cityName);
 	}
 
 	@Test

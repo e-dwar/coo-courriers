@@ -75,15 +75,6 @@ public class City {
 	}
 
 	/**
-	 * Returns the list of the inhabitant of the current city.
-	 * 
-	 * @return inhabitants
-	 */
-	public ArrayList<Inhabitant> getInhabitants() {
-		return this.inhabitants;
-	}
-
-	/**
 	 * Returns the number of inhabitants in the city.
 	 * 
 	 * @return the number of inhabitants in the city
