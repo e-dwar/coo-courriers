@@ -5,8 +5,7 @@ import letter.Letter;
 
 import org.junit.Test;
 
-import city.BankAccount;
-import city.City;
+import city.*;
 
 import content.Money;
 
@@ -43,6 +42,11 @@ public class PromissoryNoteTest extends LetterTest {
 		Money money = (Money) letter.getContent();
 		expectedCost += (money.getAmount() * 0.01);
 		assertEquals(expectedCost, letter.getCost(), 0);
+	}
+	
+	@Test
+	public void moneyContentTest() {
+		assertTrue(letter.getContent() instanceof Money);
 	}
 
 	@Override

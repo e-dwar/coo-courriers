@@ -7,9 +7,6 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	public UrgentLetter(L letter) {
 		super(letter);
-		if (letter.isUrgent()) {
-			throw new MalformedLetterException();
-		}
 	}
 
 	/*

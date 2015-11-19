@@ -11,6 +11,9 @@ public abstract class LetterDecorator<L extends Letter<?>> extends Letter<Conten
 	 */
 	public LetterDecorator(L aLetter) {
 		super(aLetter.getSender(), aLetter.getReceiver(), aLetter.getContent());
+		if (aLetter.isUrgent()) {
+			throw new MalformedLetterException();
+		}
 		content = aLetter;
 	}
 

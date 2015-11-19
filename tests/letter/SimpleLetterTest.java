@@ -5,7 +5,7 @@ import letter.Letter;
 
 import org.junit.Test;
 
-import content.Content;
+import content.*;
 
 public class SimpleLetterTest extends LetterTest {
 
@@ -21,7 +21,7 @@ public class SimpleLetterTest extends LetterTest {
 
 	@Test
 	public void textContentTest() {
-		assertTrue(letter.getContent() instanceof Content);
+		assertTrue(letter.getContent() instanceof Text);
 	}
 
 	public Letter<?> createLetter() {

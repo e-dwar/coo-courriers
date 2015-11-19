@@ -17,6 +17,7 @@ public class Main {
 			TraceBuffer.error(e);
 		}
 		TraceBuffer.flush();
+				
 	}
 
 	/**
@@ -30,6 +31,7 @@ public class Main {
 		int nDays = 3;
 		City disneyLand = new City("Disney Land");
 		addInhabitants(disneyLand, nInhabitants);
+		
 		for (i = 0; i <= nDays; i++) {
 			TraceBuffer.add(Messages.dayDbg(i + 1));
 			disneyLand.distributeLetters();
