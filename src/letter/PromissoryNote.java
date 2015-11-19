@@ -8,6 +8,10 @@ public class PromissoryNote extends Letter<Money> {
 	/*
 	 * Constructor
 	 */
+	public PromissoryNote(Inhabitant sender, Inhabitant receiver) {
+		super(sender, receiver);
+	}
+	
 	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
 		super(sender, receiver, content);
 	}

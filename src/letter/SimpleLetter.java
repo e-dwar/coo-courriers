@@ -10,6 +10,10 @@ public class SimpleLetter extends Letter<Text> {
 	/*
 	 * Constructor
 	 */
+	public SimpleLetter(Inhabitant sender, Inhabitant receiver) {
+		super(sender, receiver);
+	}
+
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver, Text content) {
 		super(sender, receiver, content);
 	}

@@ -8,7 +8,7 @@ import letter.*;
 
 public class Main {
 
-	private static Random rdm = new Random(123456789);
+	private static Random rdm = new Random();
 
 	public static void main(String[] args) {
 		try {
@@ -36,7 +36,7 @@ public class Main {
 			TraceBuffer.add(Messages.dayDbg(i + 1));
 			disneyLand.distributeLetters();
 			if (i < nDays) {
-				nLetters = getRandomInt() % disneyLand.size();
+				nLetters = getRandomInt(disneyLand.size());
 				for (j = 0; j < nLetters; j++) {
 					try {
 						letter = getRandomLetter(disneyLand);
@@ -66,8 +66,8 @@ public class Main {
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aLetter));
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aPromissory));
 		TraceBuffer.add("Prix d'une registered = " + aRegistered.getCost() + "$");
-		Letter<Content> aUrgent1 = new UrgentLetter<RegisteredLetter<?>>(new RegisteredLetter<SimpleLetter>(aLetter));
-		Letter<Content> aUrgent2 = new RegisteredLetter<UrgentLetter<?>>(new UrgentLetter<SimpleLetter>(aLetter));
+		Letter<RegisteredLetter<?>> aUrgent1 = new UrgentLetter<RegisteredLetter<?>>(new RegisteredLetter<SimpleLetter>(aLetter));
+		Letter<UrgentLetter<?>> aUrgent2 = new RegisteredLetter<UrgentLetter<?>>(new UrgentLetter<SimpleLetter>(aLetter));
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent1));
 		TraceBuffer.cr();
 		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent2));
@@ -88,7 +88,7 @@ public class Main {
 		BankAccount bankAccount;
 		for (i = 0; i < n; i++) {
 			name = "Person #" + (i + 1);
-			bankAccount = new BankAccount((getRandomInt() % 5) * 1000);
+			bankAccount = new BankAccount(getRandomInt(5) * 1000);
 			city.addInhabitant(new Inhabitant(name, bankAccount));
 		}
 	}
@@ -103,17 +103,17 @@ public class Main {
 		Letter<?> letter;
 		Inhabitant sender = getRandomInhabitant(city);
 		Inhabitant receiver = getRandomInhabitant(city);
-		if ((getRandomInt() % 2) == 1) {
-			Money content = new Money(10 * (getRandomInt() % 5 + 1));
+		if (getRandomInt(2) == 1) {
+			Money content = new Money(10 * (getRandomInt(5) + 1));
 			letter = new PromissoryNote(sender, receiver, content);
 		} else {
 			Text content = new Text("Hello " + receiver + "!\n\n - " + sender);
 			letter = new SimpleLetter(sender, receiver, content);
 		}
-		if ((getRandomInt() % 2) == 1) {
+		if (getRandomInt(2) == 1) {
 			letter = new RegisteredLetter<Letter<?>>(letter);
 		}
-		if ((getRandomInt() % 2) == 1) {
+		if (getRandomInt(2) == 1) {
 			letter = new UrgentLetter<Letter<?>>(letter);
 		}
 		return letter;
@@ -125,15 +125,16 @@ public class Main {
 	 * @return A random inhabitant from the provided city.
 	 */
 	private static Inhabitant getRandomInhabitant(City city) {
-		return city.getInhabitant(getRandomInt() % city.size());
+		return city.getInhabitant(getRandomInt(city.size()));
 	}
 
 	/**
 	 * Gives an integer between 0 and Integer.MAX_VALUE - 1.
+	 * @param sup TODO
 	 * 
 	 * @return An integer between 0 and Integer.MAX_VALUE - 1.
 	 */
-	private static int getRandomInt() {
-		return rdm.nextInt(Integer.MAX_VALUE);
+	private static int getRandomInt(int sup) {
+		return rdm.nextInt(sup);
 	}
 }

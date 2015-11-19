@@ -1,20 +1,15 @@
 package letter;
 
-import content.Content;
-
-public abstract class LetterDecorator<L extends Letter<?>> extends Letter<Content> {
-
-	protected L content;
+public abstract class LetterDecorator<L extends Letter<?>> extends Letter<L> {
 	
 	/*
 	 * Constructor
 	 */
 	public LetterDecorator(L aLetter) {
-		super(aLetter.getSender(), aLetter.getReceiver(), aLetter.getContent());
+		super(aLetter.getSender(), aLetter.getReceiver(), aLetter);
 		if (aLetter.isUrgent()) {
 			throw new MalformedLetterException();
 		}
-		content = aLetter;
 	}
 
 	/*
