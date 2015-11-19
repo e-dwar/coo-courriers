@@ -17,7 +17,6 @@ public class Main {
 			TraceBuffer.error(e);
 		}
 		TraceBuffer.flush();
-				
 	}
 
 	/**

@@ -16,6 +16,11 @@ public class Inhabitant {
 	/*
 	 * Constructor
 	 */
+	public Inhabitant(String name) {
+		this.name = name;
+		this.bankAccount = new BankAccount(0);
+	}
+	
 	public Inhabitant(String name, BankAccount bankAccount) {
 		this.name = name;
 		this.bankAccount = bankAccount;
