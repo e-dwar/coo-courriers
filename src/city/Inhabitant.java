@@ -74,7 +74,6 @@ public class Inhabitant {
 	 * @return true if the letter is sent otherwise returns flase
 	 */
 	public boolean sendLetter(Letter<?> letter) {
-		//boolean isValid = checkLetter(letter);
 		boolean isValid = letter.checkLetter(bankAccount);
 		if (isValid) {
 			this.bankAccount.debit(letter.getCost());
