@@ -4,7 +4,8 @@ import content.Text;
 
 public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
-	public final static double COST_AOR = 0.15;
+	//EXTRA_COST stands for the the extra cost of the registered letter. Allows the sender to be aware when the receiver receives the letter.
+	public final static double EXTRA_COST = 0.15;
 	
 	/*
 	 * Constructor
@@ -26,10 +27,14 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	@Override
 	public double getCost() {
+		//If we detect an UrgentLetter in our content, we have to change the way that we calculate the final cost.
 		if(!this.content.isUrgent())
-			return this.content.getCost() + COST_AOR;
+			return this.content.getCost() + EXTRA_COST;
 		else 
-			return (((this.content.getCost())/UrgentLetter.COEFFICIENT) + COST_AOR) * UrgentLetter.COEFFICIENT;
+			/*Our content has already been multiplied by the UrgentLetter's coefficient. But what we want, is that the multiplication is done at the end.
+			 * So, we're dividing the cost to obtain a cost coefficient without and then adds additional cost then multiplied again
+			 */
+			return (((this.content.getCost())/UrgentLetter.COEFFICIENT) + EXTRA_COST) * UrgentLetter.COEFFICIENT;
 	}
 
 	/**

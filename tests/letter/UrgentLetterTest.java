@@ -42,8 +42,8 @@ public class UrgentLetterTest extends LetterTest {
 		RegisteredLetter<Letter<?>> registeredLetter2 = new RegisteredLetter<Letter<?>>(new UrgentLetter<PromissoryNote>(promissoryNote));
 		
 		
-		Double expectedCost = (SimpleLetter.COST + RegisteredLetter.COST_AOR) * UrgentLetter.COEFFICIENT;
-		Double expectedCostForPromissory = ((SimpleLetter.COST + (promissoryNote.getAmount() * PromissoryNote.COMMISSION) + RegisteredLetter.COST_AOR) * UrgentLetter.COEFFICIENT);
+		Double expectedCost = (SimpleLetter.COST + RegisteredLetter.EXTRA_COST) * UrgentLetter.COEFFICIENT;
+		Double expectedCostForPromissory = ((SimpleLetter.COST + (promissoryNote.getAmount() * PromissoryNote.COMMISSION) + RegisteredLetter.EXTRA_COST) * UrgentLetter.COEFFICIENT);
 		assertEquals(expectedCost, urgentLetter.getCost(),0);
 		assertEquals(expectedCost, registeredLetter.getCost(), 0);
 		

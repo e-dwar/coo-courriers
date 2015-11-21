@@ -2,6 +2,7 @@ package letter;
 
 public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
+	//COEFFICIENT stands for the coefficient which is used to determine the final price when the option urgent is chosen.
 	public final static double COEFFICIENT = 2;
 	
 	/*

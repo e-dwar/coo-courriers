@@ -20,7 +20,7 @@ public class RegisteredLetterTest extends LetterTest {
 
 	@Test
 	public void getCostTest() {
-		Double expectedCost = SimpleLetter.COST + RegisteredLetter.COST_AOR;
+		Double expectedCost = SimpleLetter.COST + RegisteredLetter.EXTRA_COST;
 		assertEquals(expectedCost, letter.getCost(), 0);
 	}
 

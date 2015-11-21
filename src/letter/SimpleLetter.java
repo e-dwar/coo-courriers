@@ -5,6 +5,7 @@ import content.Text;
 
 public class SimpleLetter extends Letter<Text> {
 
+	//COST stands for the cost of a letter
 	public final static double COST = 1;
 	
 	/*

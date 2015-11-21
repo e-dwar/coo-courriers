@@ -8,6 +8,7 @@ import out.TraceBuffer;
 
 public class PromissoryNote extends Letter<Money> {
 
+	//COMMISSION stands for the coefficient to calculate the extra cost of the letter based on its contents
 	public final static double COMMISSION = 0.01;
 	
 	/*
