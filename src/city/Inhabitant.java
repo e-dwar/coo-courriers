@@ -16,10 +16,6 @@ public class Inhabitant {
 	/*
 	 * Constructor
 	 */
-	public Inhabitant(String name) {
-		this.name = name;
-		this.bankAccount = new BankAccount(0);
-	}
 	
 	public Inhabitant(String name, BankAccount bankAccount) {
 		this.name = name;
@@ -91,7 +87,8 @@ public class Inhabitant {
 	public boolean checkLetter(Letter<?> letter) {
 		return letter.getCost() <= this.bankAccount.getAmount();
 	}
-
+	
+	
 	/**
 	 * Executes the action of the received letter.
 	 * 

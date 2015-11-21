@@ -11,6 +11,9 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	public RegisteredLetter(L letter) {
 		super(letter);
+		if (letter.isRegistered()) {
+			throw new MalformedLetterException();
+		}
 	}
 
 	/*
@@ -42,7 +45,12 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return this.content + " registered letter";
+		return "registered letter whose content is a "  + this.content ;
 	}
+	
 
+	@Override
+	public boolean isRegistered(){
+		return true;
+	}
 }

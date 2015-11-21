@@ -22,7 +22,7 @@ public class PromissoryNoteTest extends LetterTest {
 
 		// The sender has already paid the letter's cost,
 		// so we're just expecting that the money has been well debited
-		Double expectedSenderAmount = previousSenderAmount - amount;
+		Double expectedSenderAmount = previousSenderAmount /*- amount*/;
 
 		// The receiver shall receive an amount of money,
 		// and he has to send back a letter
@@ -41,6 +41,7 @@ public class PromissoryNoteTest extends LetterTest {
 		Double expectedCost = SimpleLetter.COST;
 		Money money = (Money) letter.getContent();
 		expectedCost += (money.getAmount() * 0.01);
+		expectedCost += money.getAmount();
 		assertEquals(expectedCost, letter.getCost(), 0);
 	}
 	

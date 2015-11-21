@@ -10,9 +10,6 @@ public class SimpleLetter extends Letter<Text> {
 	/*
 	 * Constructor
 	 */
-	public SimpleLetter(Inhabitant sender, Inhabitant receiver) {
-		super(sender, receiver);
-	}
 
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver, Text content) {
 		super(sender, receiver, content);
@@ -36,6 +33,6 @@ public class SimpleLetter extends Letter<Text> {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return "simple letter";
+		return "simple letter whose content is a " + this.content.toString();
 	}
 }

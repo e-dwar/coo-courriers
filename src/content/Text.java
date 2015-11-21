@@ -26,4 +26,10 @@ public class Text implements Content {
 	public String getText() {
 		return this.text;
 	}
+	
+	public String toString()
+	{
+		return "text content ["+ this.text + "]";
+	}
+	
 }

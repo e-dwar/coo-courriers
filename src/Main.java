@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			run2();
+			run();
 		} catch (Exception e) {
 			TraceBuffer.error(e);
 		}
@@ -22,13 +22,13 @@ public class Main {
 	/**
 	 * Deuxième trace.
 	 */
-	private static void run2() {
+	private static void run() {
 		Letter<?> letter;
 		int i, j;
 		int nInhabitants = 10;
 		int nLetters = 0;
 		int nDays = 3;
-		City disneyLand = new City("Disney Land");
+		City disneyLand = new City("DisneyLand");
 		addInhabitants(disneyLand, nInhabitants);
 		
 		for (i = 0; i <= nDays; i++) {
@@ -47,32 +47,6 @@ public class Main {
 			}
 			TraceBuffer.flush();
 		}
-	}
-
-	/**
-	 * Première trace.
-	 */
-	private static void run1() {
-		SimpleLetter aLetter;
-		PromissoryNote aPromissory;
-		RegisteredLetter<SimpleLetter> aRegistered;
-		City disneyLand = new City("Disney Land");
-		Inhabitant mickey = new Inhabitant("Mickey Mouse", disneyLand, new BankAccount(5000.0));
-		Inhabitant minnie = new Inhabitant("Minnie Mouse", disneyLand, new BankAccount(5000.0));
-		aLetter = new SimpleLetter(mickey, minnie, new Text("I need money !"));
-		aRegistered = new RegisteredLetter<SimpleLetter>(aLetter);
-		aPromissory = new PromissoryNote(minnie, mickey, new Money(150));
-		TraceBuffer.add(Messages.xSentToYWithCostDbg(aLetter));
-		TraceBuffer.add(Messages.xSentToYWithCostDbg(aPromissory));
-		TraceBuffer.add("Prix d'une registered = " + aRegistered.getCost() + "$");
-		Letter<RegisteredLetter<?>> aUrgent1 = new UrgentLetter<RegisteredLetter<?>>(new RegisteredLetter<SimpleLetter>(aLetter));
-		Letter<UrgentLetter<?>> aUrgent2 = new RegisteredLetter<UrgentLetter<?>>(new UrgentLetter<SimpleLetter>(aLetter));
-		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent1));
-		TraceBuffer.cr();
-		TraceBuffer.add(Messages.xSentToYWithCostDbg(aUrgent2));
-		mickey.sendLetter(aRegistered);
-		minnie.sendLetter(aPromissory);
-		disneyLand.distributeLetters();
 	}
 
 	/**

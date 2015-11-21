@@ -16,15 +16,11 @@ public abstract class Letter<C extends Content> implements Content {
 	/*
 	 * Constructor
 	 */
-	public Letter(Inhabitant sender, Inhabitant receiver) {
+	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
 		this.sender = sender;
 		this.receiver = receiver;
-		this.opened = false;
-	}
-
-	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
-		this(sender, receiver);
 		this.content = content;
+		this.opened = false;
 	}
 
 	/*
@@ -56,15 +52,6 @@ public abstract class Letter<C extends Content> implements Content {
 	 */
 	public C getContent() {
 		return content;
-	}
-
-	/**
-	 * Sets a new value to attribute content.
-	 * 
-	 * @param content the content
-	 */
-	public void setContent(C content) {
-		this.content = content;
 	}
 
 	/**
@@ -108,5 +95,12 @@ public abstract class Letter<C extends Content> implements Content {
 	public boolean isUrgent() {
 		return false;
 	}
-
+	
+	/**
+	 * Returns if the letter is registered or not.
+	 * @return false
+	 */
+	public boolean isRegistered(){
+		return false;
+	}
 }

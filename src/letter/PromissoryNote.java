@@ -2,15 +2,14 @@ package letter;
 
 import city.Inhabitant;
 import content.*;
+import out.Messages;
+import out.TraceBuffer;
 
 public class PromissoryNote extends Letter<Money> {
 
 	/*
 	 * Constructor
 	 */
-	public PromissoryNote(Inhabitant sender, Inhabitant receiver) {
-		super(sender, receiver);
-	}
 	
 	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
 		super(sender, receiver, content);
@@ -25,7 +24,7 @@ public class PromissoryNote extends Letter<Money> {
 	 */
 	@Override
 	public double getCost() {
-		return 1 + (this.getAmount() * 0.01);
+		return (1 + (this.getAmount() * 0.01)) + this.getAmount();
 
 	}
 
@@ -36,21 +35,24 @@ public class PromissoryNote extends Letter<Money> {
 	@Override
 	public void doAction() {
 		super.doAction();
-		if (this.getAmount() <= this.sender.getBankAccount().getAmount()) {
-			this.sender.getBankAccount().debit(this.getAmount());
+		//if (this.getAmount() <= this.sender.getBankAccount().getAmount()) {
+			//this.sender.getBankAccount().debit(this.getAmount());
 			this.receiver.getBankAccount().credit(this.getAmount());
+			TraceBuffer.add(Messages.receiverCredited(this));
 			Text aText = new Text("Thanks for the money!");
 			Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
 			letter.getSender().sendLetter(letter);
-		}
+		//}
 	}
 
 	/**
 	 * @return the type of the letter with his content
 	 */
 	public String toString() {
-		return "promissory note (" + this.getAmount() + ")";
+		return "promissory note whose content is a " + this.content.toString();
 	}
+	
+	
 
 	/**
 	 * Shortcut for <code>this.content.getAmount()</code>.

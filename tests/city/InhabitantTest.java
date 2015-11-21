@@ -47,6 +47,15 @@ public class InhabitantTest {
 		assertFalse(aInhabitant.getCity().getPostBox().isEmpty());
 		assertTrue(aInhabitant.getCity().getPostBox().contains(aSimpleLetter));
 	}
+	
+	@Test
+	public void sendLetterWithEnoughMoneyTest(){
+		Letter<?> aPromissory = this.aLetterFactory.createPromissoryNote(1000000.0);
+		assertTrue(aInhabitant.getCity().getPostBox().isEmpty());
+		aInhabitant.sendLetter(aPromissory);
+		assertTrue(aInhabitant.getCity().getPostBox().isEmpty());
+		assertFalse(aInhabitant.getCity().getPostBox().contains(aPromissory));
+	}
 
 	@Test
 	public void checkLetterTest() {

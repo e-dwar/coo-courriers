@@ -1,6 +1,7 @@
 package out;
 
 import city.Inhabitant;
+import content.Money;
 import letter.Letter;
 
 public class Messages {
@@ -18,7 +19,7 @@ public class Messages {
 	 *         receiver.
 	 */
 	public static String letterSent(Letter<?> letter) {
-		return "-> " + letter.getSender() + " mails a " + letter + " to " + letter.getReceiver();
+		return "-> " + letter.getSender() + " mails a " + letter + " to " + letter.getReceiver() + " for a cost of " + letter.getCost() + "$";
 	}
 
 	/**
@@ -58,6 +59,19 @@ public class Messages {
 		message += letter.getSender().getBankAccount().getAmount();
 		return message;
 	}
+	
+	/**
+	 * @param letter
+	 * @return a message when the receiver credit money on his bank account.
+	 */
+	public static String receiverCredited(Letter<Money> letter){
+		String message = "";
+		message += "- " + letter.getContent().getAmount();
+		message += " are credited to " + letter.getReceiver();
+		message += " account whose balance is now ";
+		message += letter.getReceiver().getBankAccount().getAmount();
+		return message;
+	}
 
 	/**
 	 * @param n
@@ -65,14 +79,6 @@ public class Messages {
 	 */
 	public static String dayDbg(int n) {
 		return "\n------\nDAY " + n + "\n------\n";
-	}
-
-	// DEBUG
-	public static String xSentToYWithCostDbg(Letter<?> letter) {
-		String message = "";
-		message += letter.getSender() + " a envoyé une lettre à " + letter.getReceiver();
-		message += " ce qui lui a coûté : " + letter.getCost() + "$";
-		return message;
 	}
 
 }

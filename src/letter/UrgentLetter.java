@@ -7,6 +7,9 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	public UrgentLetter(L letter) {
 		super(letter);
+		if (letter.isUrgent()) {
+			throw new MalformedLetterException();
+		}
 	}
 
 	/*
@@ -34,6 +37,6 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 * @return the type of the letter
 	 */
 	public String toString() {
-		return this.content + " urgent letter";
+		return "urgent letter whose content is a " + this.content ;
 	}
 }

@@ -2,6 +2,7 @@ package letter;
 
 import static org.junit.Assert.*;
 import letter.Letter;
+import testdouble.LetterDecoratorDouble;
 
 import org.junit.*;
 
@@ -28,6 +29,18 @@ public class RegisteredLetterTest extends LetterTest {
 		assertEquals(0, receiver.numberOfLetterSent);
 		createLetter().doAction();
 		assertEquals(1, receiver.numberOfLetterSent);
+	}
+	
+	@Test
+	public void registeredOnceShouldPassTest() {
+		SimpleLetter simpleLetter = letterFactory.createSimpleLetter();
+		new RegisteredLetter<Letter<?>>(new LetterDecoratorDouble<SimpleLetter>(simpleLetter));
+	}
+	
+	@Test(expected=MalformedLetterException.class)
+	public void registeredMoreThanOnceShouldFailTest() {
+		SimpleLetter simpleLetter = letterFactory.createSimpleLetter();
+		new RegisteredLetter<Letter<?>>(new LetterDecoratorDouble<Letter<?>>(new RegisteredLetter<SimpleLetter>(simpleLetter)));
 	}
 
 	public Letter<?> createLetter() {
