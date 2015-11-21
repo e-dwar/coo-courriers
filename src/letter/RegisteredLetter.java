@@ -26,7 +26,10 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	@Override
 	public double getCost() {
-		return this.content.getCost() + COST_AOR;
+		if(!this.content.isUrgent())
+			return this.content.getCost() + COST_AOR;
+		else
+			return (((this.content.getCost())/2) + COST_AOR) * 2;
 	}
 
 	/**

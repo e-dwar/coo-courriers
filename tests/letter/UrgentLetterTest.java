@@ -29,5 +29,16 @@ public class UrgentLetterTest extends LetterTest {
 	public Letter<?> createLetter() {
 		return letterFactory.createUwithRLwithSL();
 	}
+	
+	@Test
+	public void getCostTest(){
+		SimpleLetter simpleLetter = letterFactory.createSimpleLetter();
+		UrgentLetter<Letter<?>> urgentLetter = new UrgentLetter<Letter<?>>(new RegisteredLetter<SimpleLetter>(simpleLetter));
+		RegisteredLetter<Letter<?>> registeredLetter = new RegisteredLetter<Letter<?>>(new UrgentLetter<SimpleLetter>(simpleLetter));
+		
+		Double expectedCost = (SimpleLetter.COST + RegisteredLetter.COST_AOR) * 2;
+		assertEquals(expectedCost, urgentLetter.getCost(),0);
+		assertEquals(expectedCost, registeredLetter.getCost(), 0);
+	}
 
 }
