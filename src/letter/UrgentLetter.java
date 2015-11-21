@@ -2,6 +2,8 @@ package letter;
 
 public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 
+	public final static double COEFFICIENT = 2;
+	
 	/*
 	 * Constructor
 	 */
@@ -21,7 +23,7 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	@Override
 	public double getCost() {
-		return this.content.getCost() * 2;
+		return this.content.getCost() * UrgentLetter.COEFFICIENT;
 	}
 
 	@Override

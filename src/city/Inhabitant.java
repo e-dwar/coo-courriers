@@ -74,7 +74,8 @@ public class Inhabitant {
 	 * @return true if the letter is sent otherwise returns flase
 	 */
 	public boolean sendLetter(Letter<?> letter) {
-		boolean isValid = checkLetter(letter);
+		//boolean isValid = checkLetter(letter);
+		boolean isValid = letter.checkLetter(bankAccount);
 		if (isValid) {
 			this.bankAccount.debit(letter.getCost());
 			this.city.addLetter(letter);
@@ -83,11 +84,6 @@ public class Inhabitant {
 		}
 		return isValid;
 	}
-
-	public boolean checkLetter(Letter<?> letter) {
-		return letter.getCost() <= this.bankAccount.getAmount();
-	}
-	
 	
 	/**
 	 * Executes the action of the received letter.

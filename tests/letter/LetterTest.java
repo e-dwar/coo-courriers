@@ -5,6 +5,7 @@ import letter.Letter;
 
 import org.junit.*;
 
+import city.BankAccount;
 import testdouble.InhabitantDouble;
 
 public abstract class LetterTest {
@@ -35,7 +36,17 @@ public abstract class LetterTest {
 		assertFalse(letter.getOpened());
 		letter.doAction();
 		assertTrue(letter.getOpened());
-
+	}
+	
+	@Test
+	public void checkLetterTest(){
+		BankAccount bankAccount = receiver.getBankAccount();
+		SimpleLetter simpleLetter = letterFactory.createSimpleLetter();
+		bankAccount.debit(bankAccount.getAmount());
+		bankAccount.credit(SimpleLetter.COST * 2);
+		assertTrue(simpleLetter.checkLetter(bankAccount));
+		bankAccount.debit(bankAccount.getAmount());
+		assertFalse(simpleLetter.checkLetter(bankAccount));
 	}
 
 }

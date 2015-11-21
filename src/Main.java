@@ -27,7 +27,7 @@ public class Main {
 		int i, j;
 		int nInhabitants = 10;
 		int nLetters = 0;
-		int nDays = 3;
+		int nDays = 6;
 		City disneyLand = new City("DisneyLand");
 		addInhabitants(disneyLand, nInhabitants);
 		

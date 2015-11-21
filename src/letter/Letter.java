@@ -1,5 +1,6 @@
 package letter;
 
+import city.BankAccount;
 import city.Inhabitant;
 import content.Content;
 
@@ -84,7 +85,6 @@ public abstract class Letter<C extends Content> implements Content {
 	 */
 	public void doAction() {
 		this.setOpened(true);
-
 	}
 
 	/**
@@ -102,5 +102,13 @@ public abstract class Letter<C extends Content> implements Content {
 	 */
 	public boolean isRegistered(){
 		return false;
+	}
+	
+	/**
+	 * @param bankAccount
+	 * @return true if the letter cost less than the amount on the bankAccount, otherwise, returns false
+	 */
+	public boolean checkLetter(BankAccount bankAccount){
+		return this.getCost() <= bankAccount.getAmount();
 	}
 }

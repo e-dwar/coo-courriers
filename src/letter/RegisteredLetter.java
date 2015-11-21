@@ -28,8 +28,8 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	public double getCost() {
 		if(!this.content.isUrgent())
 			return this.content.getCost() + COST_AOR;
-		else
-			return (((this.content.getCost())/2) + COST_AOR) * 2;
+		else 
+			return (((this.content.getCost())/UrgentLetter.COEFFICIENT) + COST_AOR) * UrgentLetter.COEFFICIENT;
 	}
 
 	/**

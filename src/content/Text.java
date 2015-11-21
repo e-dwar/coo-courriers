@@ -27,6 +27,9 @@ public class Text implements Content {
 		return this.text;
 	}
 	
+	/**
+	 * @return a string with the type of the content and with his content.
+	 */
 	public String toString()
 	{
 		return "text content ["+ this.text + "]";

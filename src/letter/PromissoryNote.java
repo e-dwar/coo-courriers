@@ -1,5 +1,6 @@
 package letter;
 
+import city.BankAccount;
 import city.Inhabitant;
 import content.*;
 import out.Messages;
@@ -7,6 +8,8 @@ import out.TraceBuffer;
 
 public class PromissoryNote extends Letter<Money> {
 
+	public final static double COMMISSION = 0.01;
+	
 	/*
 	 * Constructor
 	 */
@@ -24,7 +27,7 @@ public class PromissoryNote extends Letter<Money> {
 	 */
 	@Override
 	public double getCost() {
-		return (1 + (this.getAmount() * 0.01)) + this.getAmount();
+		return (1 + (this.getAmount() * PromissoryNote.COMMISSION));
 
 	}
 
@@ -35,14 +38,12 @@ public class PromissoryNote extends Letter<Money> {
 	@Override
 	public void doAction() {
 		super.doAction();
-		//if (this.getAmount() <= this.sender.getBankAccount().getAmount()) {
-			//this.sender.getBankAccount().debit(this.getAmount());
-			this.receiver.getBankAccount().credit(this.getAmount());
-			TraceBuffer.add(Messages.receiverCredited(this));
-			Text aText = new Text("Thanks for the money!");
-			Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
-			letter.getSender().sendLetter(letter);
-		//}
+		this.sender.getBankAccount().debit(this.getAmount());
+		this.receiver.getBankAccount().credit(this.getAmount());
+		TraceBuffer.add(Messages.receiverCredited(this));
+		Text aText = new Text("Thanks for the money!");
+		Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
+		letter.getSender().sendLetter(letter);
 	}
 
 	/**
@@ -53,11 +54,19 @@ public class PromissoryNote extends Letter<Money> {
 	}
 	
 	
-
 	/**
 	 * Shortcut for <code>this.content.getAmount()</code>.
 	 */
 	public double getAmount() {
 		return this.content.getAmount();
+	}
+	
+	/**
+	 * @param bankAccount
+	 * @return true if the letter cost less than the amount on the bankAccount, otherwise, returns false
+	 */
+	@Override
+	public boolean checkLetter(BankAccount bankAccount){
+		return this.getCost() + this.getAmount() <= bankAccount.getAmount();
 	}
 }

@@ -27,6 +27,9 @@ public class Money implements Content {
 		return this.amount;
 	}
 	
+	/**
+	 * @return a string with the type of the content and with his content.
+	 */
 	public String toString()
 	{
 		return "money content ["+this.amount + "$]";
