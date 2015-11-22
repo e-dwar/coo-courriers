@@ -29,6 +29,20 @@ public abstract class Letter<C extends Content> implements Content {
 	 */
 
 	/**
+	 * Returns the letter's cost.
+	 * 
+	 * @return the cost
+	 */
+	public abstract double getCost();
+
+	/**
+	 * Returns a description of the letter.
+	 * 
+	 * @return The description of the letter.s
+	 */
+	public abstract String getDescription();
+
+	/**
 	 * Returns the value of the attribute sender.
 	 * 
 	 * @return the sender
@@ -74,13 +88,6 @@ public abstract class Letter<C extends Content> implements Content {
 	}
 
 	/**
-	 * Returns the letter's cost.
-	 * 
-	 * @return the cost
-	 */
-	public abstract double getCost();
-
-	/**
 	 * Executes an action on the opening.
 	 */
 	public void doAction() {
@@ -95,20 +102,35 @@ public abstract class Letter<C extends Content> implements Content {
 	public boolean isUrgent() {
 		return false;
 	}
-	
+
 	/**
 	 * Returns if the letter is registered or not.
+	 * 
 	 * @return false
 	 */
-	public boolean isRegistered(){
+	public boolean isRegistered() {
 		return false;
 	}
-	
+
+	/**
+	 * Returns if the letter is a promissory note or not.
+	 * 
+	 * @return false
+	 */
+	public boolean isPromissoryNote() {
+		return false;
+	}
+
 	/**
 	 * @param bankAccount
-	 * @return true if the letter cost less than the amount on the bankAccount, otherwise, returns false
+	 * @return true if the letter cost less than the amount on the bankAccount,
+	 *         otherwise, returns false
 	 */
-	public boolean checkLetter(BankAccount bankAccount){
+	public boolean checkLetter(BankAccount bankAccount) {
 		return this.getCost() <= bankAccount.getAmount();
+	}
+
+	public String toString() {
+		return this.getDescription() + " whose content is " + this.content;
 	}
 }

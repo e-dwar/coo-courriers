@@ -40,8 +40,9 @@ public class PromissoryNote extends Letter<Money> {
 	public void doAction() {
 		super.doAction();
 		this.sender.getBankAccount().debit(this.getAmount());
+		TraceBuffer.add(Messages.senderDebited(this, this.getAmount()));
 		this.receiver.getBankAccount().credit(this.getAmount());
-		TraceBuffer.add(Messages.receiverCredited(this));
+		TraceBuffer.add(Messages.receiverCredited(this, this.getAmount()));
 		Text aText = new Text("Thanks for the money!");
 		Letter<?> letter = new SimpleLetter(this.receiver, this.sender, aText);
 		letter.getSender().sendLetter(letter);
@@ -50,8 +51,8 @@ public class PromissoryNote extends Letter<Money> {
 	/**
 	 * @return the type of the letter with his content
 	 */
-	public String toString() {
-		return "promissory note whose content is a " + this.content.toString();
+	public String getDescription() {
+		return "a promissory note";
 	}
 	
 	
@@ -69,5 +70,10 @@ public class PromissoryNote extends Letter<Money> {
 	@Override
 	public boolean checkLetter(BankAccount bankAccount){
 		return this.getCost() + this.getAmount() <= bankAccount.getAmount();
+	}
+	
+	@Override
+	public boolean isPromissoryNote(){
+		return true;
 	}
 }

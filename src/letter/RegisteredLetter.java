@@ -52,8 +52,8 @@ public class RegisteredLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	/**
 	 * @return the type of the letter
 	 */
-	public String toString() {
-		return "registered letter whose content is a "  + this.content ;
+	public String getDescription() {
+		return "a registered letter";
 	}
 	
 

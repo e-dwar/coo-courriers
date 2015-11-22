@@ -13,5 +13,10 @@ public class LetterDecoratorDouble<L extends Letter<?>> extends LetterDecorator<
 	public double getCost() {
 		return 0;
 	}
+
+	@Override
+	public String getDescription() {
+		return "a letter decorator";
+	}
 	
 }

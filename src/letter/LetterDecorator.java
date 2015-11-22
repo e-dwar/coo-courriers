@@ -32,4 +32,9 @@ public abstract class LetterDecorator<L extends Letter<?>> extends Letter<L> {
 	public boolean isRegistered(){
 		return this.content.isRegistered() || false;
 	}
+	
+	@Override
+	public boolean isPromissoryNote(){
+		return this.content.isPromissoryNote() || false;
+	}
 }

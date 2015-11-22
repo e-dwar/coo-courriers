@@ -10,13 +10,14 @@ public class Inhabitant {
 	 * Attributes
 	 */
 	protected String name;
+	protected String alias;
 	protected City city;
 	protected BankAccount bankAccount;
 
 	/*
 	 * Constructor
 	 */
-	
+
 	public Inhabitant(String name, BankAccount bankAccount) {
 		this.name = name;
 		this.bankAccount = bankAccount;
@@ -30,6 +31,24 @@ public class Inhabitant {
 	/*
 	 * Methods
 	 */
+
+	/**
+	 * Sets the new value of the attribute alias.
+	 * 
+	 * @param alias the alias to set
+	 */
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	/**
+	 * Returns the value of the attribute alias.
+	 * 
+	 * @return the alias
+	 */
+	public String getAlias() {
+		return alias == null ? name : alias;
+	}
 
 	/**
 	 * Returns the value of the attribute name.
@@ -68,22 +87,31 @@ public class Inhabitant {
 	}
 
 	/**
+	 * A shortcut for <code>getBankAccount().getAmount()</code>.
+	 * 
+	 * @return the balance
+	 */
+	public double getBalance() {
+		return bankAccount.getAmount();
+	}
+
+	/**
 	 * Adds a letter to the postBox contained in the attribute city.
 	 * 
 	 * @param letter
-	 * @return true if the letter is sent otherwise returns flase
+	 * @return true if the letter is sent otherwise returns false
 	 */
 	public boolean sendLetter(Letter<?> letter) {
 		boolean isValid = letter.checkLetter(bankAccount);
 		if (isValid) {
-			this.bankAccount.debit(letter.getCost());
 			this.city.addLetter(letter);
 			TraceBuffer.add(Messages.letterSent(letter));
-			TraceBuffer.add(Messages.senderDebited(letter));
+			this.bankAccount.debit(letter.getCost());
+			TraceBuffer.add(Messages.senderDebited(letter, letter.getCost()));
 		}
 		return isValid;
 	}
-	
+
 	/**
 	 * Executes the action of the received letter.
 	 * 

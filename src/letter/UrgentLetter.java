@@ -39,7 +39,7 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	/**
 	 * @return the type of the letter
 	 */
-	public String toString() {
-		return "urgent letter whose content is a " + this.content ;
+	public String getDescription() {
+		return "an urgent letter";
 	}
 }

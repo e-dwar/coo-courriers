@@ -26,13 +26,12 @@ public class Money implements Content {
 	public double getAmount() {
 		return this.amount;
 	}
-	
+
 	/**
 	 * @return a string with the type of the content and with his content.
 	 */
-	public String toString()
-	{
-		return "money content ["+this.amount + "$]";
+	public String toString() {
+		return "an amount of money [" + this.amount + "$]";
 	}
-	
+
 }

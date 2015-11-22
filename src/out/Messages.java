@@ -7,19 +7,15 @@ import letter.Letter;
 public class Messages {
 
 	/**
-	 * @return a message when the letter is already opened.
-	 */
-	public static String alreadyOpen() {
-		return "This letter has already been opened.";
-	}
-
-	/**
 	 * @param letter
 	 * @return a message when a letter is sent. Display the sender and the
 	 *         receiver.
 	 */
 	public static String letterSent(Letter<?> letter) {
-		return "-> " + letter.getSender() + " mails a " + letter + " to " + letter.getReceiver() + " for a cost of " + letter.getCost() + "$";
+		String message = lineHeadingTo(letter);
+		message += "-> " + letter.getSender() + " mails " + letter + " to ";
+		message += letter.getReceiver() + " for a cost of " + letter.getCost() + "$";
+		return message;
 	}
 
 	/**
@@ -28,48 +24,35 @@ public class Messages {
 	 *         receiver.
 	 */
 	public static String letterReceived(Letter<?> letter) {
-		return "<- " + letter.getReceiver() + " receives a " + letter + " from " + letter.getSender();
-	}
-
-	/**
-	 * @param sender
-	 * @return a message with the sender's account amount.
-	 */
-	public static String senderAccount(Inhabitant sender) {
-		return "- Sender account = " + sender.getBankAccount().getAmount();
-	}
-
-	/**
-	 * @param sender
-	 * @return a message with the receiver's account amount.
-	 */
-	public static String receiverAccount(Inhabitant receiver) {
-		return "- Receiver account = " + receiver.getBankAccount().getAmount();
+		String message = lineHeadingFrom(letter);
+		message += "<- " + letter.getReceiver() + " receives " + letter + " from ";
+		message += letter.getSender();
+		return message;
 	}
 
 	/**
 	 * @param letter
 	 * @return a message when the sender debit something on his bank account.
 	 */
-	public static String senderDebited(Letter<?> letter) {
+	public static String senderDebited(Letter<?> letter, double amount) {
 		String message = "";
-		message += "- " + letter.getCost();
+		message += "- " + amount + "$";
 		message += " are debited from " + letter.getSender();
 		message += " account whose balance is now ";
-		message += letter.getSender().getBankAccount().getAmount();
+		message += letter.getSender().getBalance() + "$";
 		return message;
 	}
-	
+
 	/**
 	 * @param letter
 	 * @return a message when the receiver credit money on his bank account.
 	 */
-	public static String receiverCredited(Letter<Money> letter){
+	public static String receiverCredited(Letter<Money> letter, double amount) {
 		String message = "";
-		message += "- " + letter.getContent().getAmount();
+		message += "- " + amount + "$";
 		message += " are credited to " + letter.getReceiver();
 		message += " account whose balance is now ";
-		message += letter.getReceiver().getBankAccount().getAmount();
+		message += letter.getReceiver().getBalance() + "$";
 		return message;
 	}
 
@@ -78,7 +61,49 @@ public class Messages {
 	 * @return a message with the day's number
 	 */
 	public static String dayDbg(int n) {
-		return "\n------\nDAY " + n + "\n------\n";
+		return "\n\n# Day " + n + "\n";
+	}
+
+	// privates
+
+	private static String lineHeadingTo(Letter<?> letter) {
+		String message = "";
+		message += "\nLetter: " + letterDescription(letter);
+		message += "\nPeople: " + getInhabitantDescription(letter.getSender());
+		message += " > " + getInhabitantDescription(letter.getReceiver());
+		return message + "\n";
+	}
+
+	private static String lineHeadingFrom(Letter<?> letter) {
+		String message = "";
+		message += "\nLetter: " + letterDescription(letter);
+		message += "\nPeople: " + getInhabitantDescription(letter.getReceiver());
+		message += " < " + getInhabitantDescription(letter.getSender());
+		return message + "\n";
+	}
+	
+	private static String letterDescription(Letter<?> letter) {
+		String message = "";
+		try {
+			while (true) {
+				message += letter.getDescription().split(" ")[1].charAt(0);
+				letter = (Letter<?>) letter.getContent();
+			}
+		} catch (ClassCastException e) {
+			message = message.toUpperCase();
+		}
+		if (isAnswerExpected(letter)) {
+			message += " (answer expected)";
+		}
+		return message;
+	}
+
+	private static boolean isAnswerExpected(Letter<?> letter) {
+		return letter.isPromissoryNote() || letter.isRegistered();
+	}
+
+	private static String getInhabitantDescription(Inhabitant inhabitant) {
+		return inhabitant.getAlias() + " [" + inhabitant.getBalance() + "$]";
 	}
 
 }

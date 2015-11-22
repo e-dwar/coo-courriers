@@ -33,7 +33,7 @@ public class SimpleLetter extends Letter<Text> {
 	/**
 	 * @return the type of the letter
 	 */
-	public String toString() {
-		return "simple letter whose content is a " + this.content.toString();
+	public String getDescription() {
+		return "a simple letter";
 	}
 }

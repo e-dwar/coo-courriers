@@ -25,7 +25,7 @@ public class Main {
 	private static void run() {
 		Letter<?> letter;
 		int i, j;
-		int nInhabitants = 10;
+		int nInhabitants = 100;
 		int nLetters = 0;
 		int nDays = 6;
 		City disneyLand = new City("DisneyLand");
@@ -35,7 +35,7 @@ public class Main {
 			TraceBuffer.add(Messages.dayDbg(i + 1));
 			disneyLand.distributeLetters();
 			if (i < nDays) {
-				nLetters = getRandomInt(disneyLand.size());
+				nLetters = getRandomInt(5);
 				for (j = 0; j < nLetters; j++) {
 					try {
 						letter = getRandomLetter(disneyLand);
@@ -59,10 +59,13 @@ public class Main {
 		int i;
 		String name;
 		BankAccount bankAccount;
+		Inhabitant inhabitant;
 		for (i = 0; i < n; i++) {
 			name = "Person #" + (i + 1);
 			bankAccount = new BankAccount(getRandomInt(5) * 1000);
-			city.addInhabitant(new Inhabitant(name, bankAccount));
+			inhabitant = new Inhabitant(name, bankAccount);
+			inhabitant.setAlias("#" + (i + 1) + "");
+			city.addInhabitant(inhabitant);
 		}
 	}
 
@@ -80,7 +83,7 @@ public class Main {
 			Money content = new Money(10 * (getRandomInt(5) + 1));
 			letter = new PromissoryNote(sender, receiver, content);
 		} else {
-			Text content = new Text("Hello " + receiver + "!\n\n - " + sender);
+			Text content = new Text("Hello " + receiver + "! - " + sender);
 			letter = new SimpleLetter(sender, receiver, content);
 		}
 		if (getRandomInt(2) == 1) {
