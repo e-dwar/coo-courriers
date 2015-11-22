@@ -26,7 +26,12 @@ public abstract class LetterTest {
 	public void isUrgentTest() {
 		assertFalse(letter.isUrgent());
 	}
-
+	
+	@Test
+	public void isPromissoryNoteTest(){
+		assertFalse(letter.isPromissoryNote());
+	}
+	
 	@Test
 	public void positiveCostTest() {
 		assertTrue(letter.getCost() > 0);

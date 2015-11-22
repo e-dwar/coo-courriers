@@ -103,7 +103,7 @@ public class Messages {
 	}
 
 	private static String getInhabitantDescription(Inhabitant inhabitant) {
-		return inhabitant.getAlias() + " [" + inhabitant.getBalance() + "$]";
+		return inhabitant.getName() + " [" + inhabitant.getBalance() + "$]";
 	}
 
 }

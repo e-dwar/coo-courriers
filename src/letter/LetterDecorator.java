@@ -21,7 +21,7 @@ public abstract class LetterDecorator<L extends Letter<?>> extends Letter<L> {
 	 * 
 	 * @return the opened
 	 */
-	public Boolean getOpened() {
+	public boolean getOpened() {
 		return this.content.getOpened();
 	}
 

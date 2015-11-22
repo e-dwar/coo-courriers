@@ -10,7 +10,6 @@ public class Inhabitant {
 	 * Attributes
 	 */
 	protected String name;
-	protected String alias;
 	protected City city;
 	protected BankAccount bankAccount;
 
@@ -31,24 +30,6 @@ public class Inhabitant {
 	/*
 	 * Methods
 	 */
-
-	/**
-	 * Sets the new value of the attribute alias.
-	 * 
-	 * @param alias the alias to set
-	 */
-	public void setAlias(String alias) {
-		this.alias = alias;
-	}
-
-	/**
-	 * Returns the value of the attribute alias.
-	 * 
-	 * @return the alias
-	 */
-	public String getAlias() {
-		return alias == null ? name : alias;
-	}
 
 	/**
 	 * Returns the value of the attribute name.

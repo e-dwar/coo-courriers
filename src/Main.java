@@ -64,7 +64,6 @@ public class Main {
 			name = "Person #" + (i + 1);
 			bankAccount = new BankAccount(getRandomInt(5) * 1000);
 			inhabitant = new Inhabitant(name, bankAccount);
-			inhabitant.setAlias("#" + (i + 1) + "");
 			city.addInhabitant(inhabitant);
 		}
 	}

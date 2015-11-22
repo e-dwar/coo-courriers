@@ -12,7 +12,7 @@ public abstract class Letter<C extends Content> implements Content {
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
 	protected C content;
-	protected Boolean opened;
+	protected boolean opened;
 
 	/*
 	 * Constructor
@@ -74,7 +74,7 @@ public abstract class Letter<C extends Content> implements Content {
 	 * 
 	 * @return the opened
 	 */
-	public Boolean getOpened() {
+	public boolean getOpened() {
 		return opened;
 	}
 

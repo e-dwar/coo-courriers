@@ -62,5 +62,10 @@ public class PromissoryNoteTest extends LetterTest {
 		bankAccount.debit(bankAccount.getAmount());
 		assertFalse(promissoryNote.checkLetter(bankAccount));
 	}
+	
+	@Test
+	public void isPromissoryNoteTest(){
+		assertTrue(letter.isPromissoryNote());
+	}
 
 }

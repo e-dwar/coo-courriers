@@ -17,6 +17,11 @@ public class RegisteredLetterTest extends LetterTest {
 		super.doActionTest();
 		assertEquals(1, city.getPostBox().size());
 	}
+	
+	@Test
+	public void isRegisteredTest(){
+		assertTrue(letter.isRegistered());
+	}
 
 	@Test
 	public void getCostTest() {
