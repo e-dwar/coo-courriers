@@ -8,11 +8,8 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	/*
 	 * Constructor
 	 */
-	public UrgentLetter(L letter) {
-		super(letter);
-		if (letter.isUrgent()) {
-			throw new MalformedLetterException();
-		}
+	public UrgentLetter(L aLetter) {
+		super(aLetter);
 	}
 
 	/*
@@ -24,7 +21,7 @@ public class UrgentLetter<L extends Letter<?>> extends LetterDecorator<L> {
 	 */
 	@Override
 	public double getCost() {
-		return this.content.getCost() * UrgentLetter.COEFFICIENT;
+		return this.content.getCost() * COEFFICIENT;
 	}
 
 	@Override

@@ -7,7 +7,9 @@ public abstract class LetterDecorator<L extends Letter<?>> extends Letter<L> {
 	 */
 	public LetterDecorator(L aLetter) {
 		super(aLetter.getSender(), aLetter.getReceiver(), aLetter);
-		
+		if (aLetter.isUrgent()) {
+			throw new MalformedLetterException("An urgent letter can't be decorated.");
+		} 
 	}
 
 	/*
@@ -25,16 +27,16 @@ public abstract class LetterDecorator<L extends Letter<?>> extends Letter<L> {
 
 	@Override
 	public boolean isUrgent() {
-		return this.content.isUrgent() || false;
+		return this.content.isUrgent();
 	}
 	
 	@Override
 	public boolean isRegistered(){
-		return this.content.isRegistered() || false;
+		return this.content.isRegistered();
 	}
 	
 	@Override
 	public boolean isPromissoryNote(){
-		return this.content.isPromissoryNote() || false;
+		return this.content.isPromissoryNote();
 	}
 }
